@@ -22,3 +22,6 @@ You can manually test your pass with a LLVM bitcode file (not available in this 
 ```
 opt -load ./LLVMRenamer.so -renamer *.bc
 ```
+
+Copyright 2016-2021 Xilinx, Inc.
+SPDX-License-Identifier: Apache-2.0
