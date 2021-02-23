@@ -1,4 +1,4 @@
-#Xilinx HLS LLVM source code
+# Xilinx HLS LLVM source code
 
 Directory            | Description      
 ---------------------|------------------
