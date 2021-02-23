@@ -1,5 +1,5 @@
 # =============================================================================
-# Xilinx HLS Release License
+# Xilinx HLS LLVM Release License
 # =============================================================================
 # (C) Copyright 2016-2021 Xilinx, Inc.
 # All Rights Reserved.
