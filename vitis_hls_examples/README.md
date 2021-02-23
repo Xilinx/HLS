@@ -56,5 +56,5 @@ Variable Use        | Description
 Within the `::LLVM_CUSTOM_CMD` variable value you may reference any environment variables using standard `$::env(name)` TCL syntax (i.e. `$::env(XILINX_OPEN_SOURCE_LLVM_BUILD_PATH)`).
 
 
-
-## Integrating  
+Copyright 2016-2021 Xilinx, Inc.
+SPDX-License-Identifier: Apache-2.0
