@@ -17,3 +17,6 @@ Directory            | Description
 
 ## Compile Vitis HLS LLVM
 run `build.sh`
+
+Copyright 2016-2021 Xilinx, Inc.
+SPDX-License-Identifier: Apache-2.0
