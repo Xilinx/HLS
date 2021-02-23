@@ -1,0 +1,9 @@
+*.swp
+*.so
+*.o
+*.log
+*/*.log
+*/proj/
+*/testinfo.yml
+*/run_hls_test.tcl
+external_tcl_flow_demo/
