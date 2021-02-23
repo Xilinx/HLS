@@ -24,3 +24,6 @@ You can manually test your pass with a LLVM bitcode file (not available in this 
 ```
 opt -always-inline -mem2reg -gvn -reflow-simplify-type -reflow-combine -mem2reg -gvn -indvars -load ./LLVMMemoryPartition.so -auto-memory-partition *.bc
 ```
+
+Copyright 2016-2021 Xilinx, Inc.
+SPDX-License-Identifier: Apache-2.0
