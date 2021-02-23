@@ -1,4 +1,4 @@
-# Xilinx HLS LLVM 2020.2
+# Xilinx Vitis HLS LLVM 2020.2
 
 The directory contains Xilinx HLS LLVM source code and examples for use with Xilinx Vitis HLS 2020.2 release.
 
