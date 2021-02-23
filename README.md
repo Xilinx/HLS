@@ -8,3 +8,5 @@ Directory            | Description
 [plugins](plugins) | Custom llvm passes that can be built and used in Vitis HLS
 [vitis_hls_examples](vitis_hls_examples) | Examples of using Vitis HLS with local llvm or plugin binaries
 
+Copyright 2016-2021 Xilinx, Inc.
+SPDX-License-Identifier: Apache-2.0
