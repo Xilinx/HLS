@@ -1,4 +1,4 @@
-# Xilinx Vitis HLS LLVM source code
+# Vitis HLS LLVM source code
 
 Directory            | Description      
 ---------------------|------------------
