@@ -1,0 +1,70 @@
+// (C) Copyright 2016-2020 Xilinx, Inc.
+// All Rights Reserved.
+//
+// Licensed to the Apache Software Foundation (ASF) under one
+// or more contributor license agreements.  See the NOTICE file
+// distributed with this work for additional information
+// regarding copyright ownership.  The ASF licenses this file
+// to you under the Apache License, Version 2.0 (the
+// "License"); you may not use this file except in compliance
+// with the License.  You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing,
+// software distributed under the License is distributed on an
+// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, either express or implied.  See the License for the
+// specific language governing permissions and limitations
+// under the License.
+//===----------------------------------------------------------------------===//
+//
+// This file defines the SPIR-specific builtin function database.  Users of
+// this file must define the BUILTIN macro to make use of this information.
+//
+//===----------------------------------------------------------------------===//
+
+// The format of this database matches clang/Basic/Builtins.def.
+
+//
+// FIFO
+//
+
+BUILTIN(__fpga_fifo_not_empty, "bvC*", "tn")
+BUILTIN(__fpga_fifo_not_full, "bvC*", "tn")
+BUILTIN(__fpga_fifo_nb_pop, "bv*v*", "tn")
+BUILTIN(__fpga_fifo_nb_push, "bv*vC*", "tn")
+BUILTIN(__fpga_fifo_pop, "vv*v*", "tn")
+BUILTIN(__fpga_fifo_push, "vv*vC*", "tn")
+
+//
+//  Stream
+//
+BUILTIN(__fpga_set_stream_depth, "vv*i", "tn")
+
+
+//
+// Shift registers
+//
+
+BUILTIN(__fpga_shift_register_shift, "viv*b", "tn")
+BUILTIN(__fpga_shift_register_peek, "iv*z", "tn")
+
+//
+// AXIS
+//
+BUILTIN(__fpga_axis_ready, "bvC*vC*vC*vC*vC*vC*vC*", "tn")
+BUILTIN(__fpga_axis_valid, "bvC*vC*vC*vC*vC*vC*vC*", "tn")
+BUILTIN(__fpga_axis_pop, "vv*v*v*v*v*v*v*v*v*v*v*v*v*v*", "tn")
+BUILTIN(__fpga_axis_push, "bv*v*v*v*v*v*v*vC*vC*vC*vC*vC*vC*vC*", "tn")
+BUILTIN(__fpga_axis_nb_pop, "bv*v*v*v*v*v*v*v*v*v*v*v*v*v*", "tn")
+BUILTIN(__fpga_axis_nb_push, "bv*v*v*v*v*v*v*vC*vC*vC*vC*vC*vC*vC*", "tn")
+
+//
+// Manual Burst
+BUILTIN(__fpga_maxi_read_req, "vv*i", "tn")
+BUILTIN(__fpga_maxi_read, "vv*v*", "tn")
+BUILTIN(__fpga_maxi_write_req, "vv*i", "tn")
+BUILTIN(__fpga_maxi_write, "vv*vC*ULLi.", "tn")
+BUILTIN(__fpga_maxi_write_resp, "vv*", "tn")
+#undef BUILTIN
