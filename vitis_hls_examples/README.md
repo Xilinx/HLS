@@ -14,10 +14,11 @@ Note that the override\* examples assume that the local LLVM binaries have some 
 
 ## How to run Vitis HLS project examples
 1. Build local LLVM and/or custom passes.
-2. Source Xilinx Vitis_HLS settings64.sh/csh 
-3. Run the following from within the example's directory:
+2. Install [Xilinx Vitis HLS](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/2020-2.html)
+3. Source Xilinx Vitis_HLS settings64.sh/csh. 
+4. Run the following from within the example's directory:
 ```
-vitis_hls -f run_hls.tcl
+vitis_hls run_hls.tcl
 ```
 
 

@@ -40,7 +40,7 @@ create_clock -period "300MHz"
 ### The following variables must be set before csynth_design
 
 # TODO: Change this location to your local opt build
-set ::LLVM_CUSTOM_OPT $::env(HOME)/Vitis_hls_llvm/hls-build/bin/opt
+set ::LLVM_CUSTOM_OPT [pwd]/../../llvm/hls-build/bin/opt
 
 # This example assumes that the local opt binary has some customized behavior (no custom passes called here)
 # Do not use global namespace (::) for variables used in LVM_CUSTOM_CMD

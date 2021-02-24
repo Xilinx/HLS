@@ -19,7 +19,7 @@
 # under the License.
 
 #!/usr/bin/env bash
-source `dirname -- $0`/../../setup-vitis-hls-llvm.sh
+source `dirname -- $0`/../setup-vitis-hls-llvm.sh
 
 clang_path=$XILINX_HLS/lnx64/tools/clang-3.9-csynth
 echo "Using Vitis HLS clang/opt: $clang_path/bin"
@@ -36,4 +36,8 @@ export LIBRARY_PATH=$clang_path/lib$LIBRARY_PATH
 [ -n "$CPATH" ] && CPATH=:$CPATH
 export CPATH=$clang_path/include$CPATH
 
-make all
+# Build against release build
+make all-debug-off
+
+# Build against debug build
+#make all

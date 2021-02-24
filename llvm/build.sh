@@ -29,10 +29,6 @@ srcroot=`pwd`
 builddir=$outroot/hls-build
 llvmdir=$srcroot/llvm
 
-# set PATH to compiler
-[ ! -f "setup-vitis-hls-llvm.sh" ] && echo "ERROR: expected `dirname $0`/../setup-vitis-hls-llvm.sh to exist!" && exit 1
-source $srcroot/setup-vitis-hls-llvm.sh
-
 # create build output directory
 mkdir -p $builddir
 cd $builddir
@@ -49,9 +45,9 @@ cmake "$LLVM_SRC_DIR" \
 	-DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
 	-DLLVM_EXTERNAL_CLANG_SOURCE_DIR=$CLANG_SRC_DIR \
 	-DLLVM_EXTERNAL_CLANG_TOOLS_EXTRA_SOURCE_DIR=$EXTRA_SRC_DIR \
-  -DLLVM_ENABLE_DOXYGEN=ON \
-  -DLLVM_BUILD_DOCS=ON \
-  -DCMAKE_BUILD_TYPE="Debug"
+        -DLLVM_ENABLE_DOXYGEN=ON \
+        -DLLVM_BUILD_DOCS=ON \
+        -DCMAKE_BUILD_TYPE="Debug"
 
 #NOTE: Use 'ninja' if you have it!:-)
 make -j $(nproc)
