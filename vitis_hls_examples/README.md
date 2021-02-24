@@ -8,7 +8,6 @@ override_llvm_flow_demo | How to use local LLVM build within Vitis HLS.  Local L
 override_opt_flow_demo | How to use local LLVM opt binary within Vitis HLS.  
 plugin_analyze_rename_flow_demo | How to call a custom LLVM opt pass within Vitis HLS.  Requires [plugins/example_analyze_rename](../plugins/example_analyze_rename) to be built.  Does not require a local LLVM build.
 plugin_auto_array_partition_flow_demo | How to use the auto_array_partition plugin within Vitis HLS.  Requires [plugins/auto_array_partition](../plugins/auto_array_partition) plugin to be built.  Does not require a local LLVM build.
-external_tcl_flow_demo | How to setup HLS TCL files to enable plugin or override to be used with minimal HLS flow changes.
 
 Note that the override\* examples assume that the local LLVM binaries have some customized behavior/passes which will be called implicitly or explicitly in the run_hls.tcl.
 
