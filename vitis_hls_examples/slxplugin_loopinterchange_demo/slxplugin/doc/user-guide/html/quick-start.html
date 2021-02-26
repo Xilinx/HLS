@@ -1,0 +1,361 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Quickstart &mdash; SLX Plugin 0.9 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Instructions" href="instructions.html" />
+    <link rel="prev" title="Introduction" href="intro.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> SLX Plugin
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exploring-the-examples">Exploring the examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#investigating-the-results">Investigating the results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-the-loop-interchange-directive">Using the loop interchange directive</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="instructions.html">Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slx-fpga.html">Use with SLX FPGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="legal.html">Legal matter</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SLX Plugin</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Quickstart</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/quick-start.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="quickstart">
+<span id="quick"></span><h1>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h1>
+<p>Follow these instructions to quickly start using the SLX Plugin.
+The instructions explain how to execute the provided examples and interpret the
+results.</p>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>The SLX Plugin is currently supported for Ubuntu 18.04.
+Make sure Vitis HLS 2020.2 is installed in your machine.
+After untarring the plugin, execute the following command from within the
+plugin’s root directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> exports
+</pre></div>
+</div>
+<p>Run the command in the same console where you will later run Vitis HLS.
+The shell needs to be configured to run the Vitis tools.</p>
+</div>
+<div class="section" id="exploring-the-examples">
+<h2>Exploring the examples<a class="headerlink" href="#exploring-the-examples" title="Permalink to this headline">¶</a></h2>
+<p>The SLX Plugin is shipped with several examples.
+Examples include C/C++ source code, scripts and reference results files.
+For a quick start, go to an example folder and execute the provided <code class="docutils literal notranslate"><span class="pre">check.sh</span></code>
+script.
+For example, perform the following to start with the <code class="docutils literal notranslate"><span class="pre">dimension_reduction</span></code>
+example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> examples/dimension_reduction/reduce_2d_to_1d
+./check.sh
+</pre></div>
+</div>
+<p>The script will call Vitis HLS and synthesize the design.
+The script will generate different solutions using different features of
+the SLX Plugin. For example, there will be solutions with and without loop
+interchange.
+Co-simulation is not run by default, but can be enabled by editing
+<code class="docutils literal notranslate"><span class="pre">x_hls.tcl</span></code> and setting <code class="docutils literal notranslate"><span class="pre">hls_exec</span></code> to 2.</p>
+<p>Key values are extracted from Vitis HLS solution reports and captured in a
+newly created <code class="docutils literal notranslate"><span class="pre">latency.ref</span></code> file.
+If the results differ from the ones saved in <code class="docutils literal notranslate"><span class="pre">latency.ref</span></code> you’ll get a
+message.
+A different file called <code class="docutils literal notranslate"><span class="pre">latency.new</span></code> will be created.
+This could happen if you use a different Vitis HLS version from the one used
+when <code class="docutils literal notranslate"><span class="pre">latency.ref</span></code> was created.</p>
+</div>
+<div class="section" id="investigating-the-results">
+<h2>Investigating the results<a class="headerlink" href="#investigating-the-results" title="Permalink to this headline">¶</a></h2>
+<p>Almost all examples generate the following three solutions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">vanilla</span></code>: uses Vitis HLS off-the-shelf without any SLX Plugin additions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nointerchange</span></code>: applies <a class="reference internal" href="instructions.html#tidy-up"><span class="std std-ref">IR design optimizations</span></a>. This can already change
+results for some examples, but it doesn’t interchange the loops.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">interchange</span></code>: applies <code class="docutils literal notranslate"><span class="pre">_SLXLoopInterchange</span></code> directives inserted in the
+example source files by interchanging the specified loop nests.</p></li>
+</ul>
+<p>Some examples generate a few more results because, for example, they
+generate additional solutions to illustrate additional effects on the design,
+such as the effect of different target clock constraints.
+This is the case for <code class="docutils literal notranslate"><span class="pre">dimension_reduction</span></code>.</p>
+<p>Looking at the tables in <code class="docutils literal notranslate"><span class="pre">latency.ref</span></code> file helps in comparing some key
+results.
+The Vitis HLS project that is also produced can be opened in the Vitis HLS
+GUI for more detailed inspection.
+The following is an excerpt of <code class="docutils literal notranslate"><span class="pre">latency.ref</span></code> for the <code class="docutils literal notranslate"><span class="pre">dimension_reduction</span></code>
+example. The table shows changes in the hotspot loop’s latency and initiation interval.
+When comparing <code class="docutils literal notranslate"><span class="pre">vanilla</span></code> to <code class="docutils literal notranslate"><span class="pre">interchange</span></code>, iteration latency goes from
+1800 to 269 when measured at the outer loop and initiation interval goes from
+7 to 1 for the inner loop.
+This means that <code class="docutils literal notranslate"><span class="pre">interchange</span></code> achieves an improvement of ~7x.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>## 0.vanilla: no LLVM_CUSTOM_CMD, no directives (clock: 333MHz)
+│              │  Latency (cycles) │ Iteration│  Initiation Interval  │
+│  Loop Name   │   min   │   max   │  Latency │  achieved │   target  │
+├─ loop_out    │   460800│   460800│      1800│          -│          -│
+│  └─ loop_in  │     1796│     1796│        12│          7│          1│
+
+## 2.interchange: LLVM_CUSTOM_CMD -slx-loop-interchange, no other  directives (clock: 333MHz)
+│              │  Latency (cycles) │ Iteration│  Initiation Interval  │
+│  Loop Name   │   min   │   max   │  Latency │  achieved │   target  │
+├─ loop_in     │    68863│    68863│       269│          -│          -│
+│  └─ loop_out │      266│      266│        12│          1│          1│
+</pre></div>
+</div>
+<p>Interchanging moves a key loop carried dependency from the inner to the outer
+loop. With that done, Vitis HLS is free to pipeline the inner loop with a far
+better initiation interval (II).</p>
+<p>Whether a loop carried dependency plays a key role depends on the latency of
+the operations needed to compute a new value from the old value.
+The <code class="docutils literal notranslate"><span class="pre">dimension_reduction</span></code> example explores this by comparing the design at
+333MHz and 85MHz. At the lower frequency, the operation completes within a
+cycle and the dependency no longer plays a key role–this is visible in
+<code class="docutils literal notranslate"><span class="pre">latency.ref</span></code> as interchanging does not help this design at 85MHz.</p>
+</div>
+<div class="section" id="using-the-loop-interchange-directive">
+<h2>Using the loop interchange directive<a class="headerlink" href="#using-the-loop-interchange-directive" title="Permalink to this headline">¶</a></h2>
+<p>This section explains how to enable the SLX Plugin and apply
+<code class="docutils literal notranslate"><span class="pre">_SLXLoopInterchange</span></code> quickly to start with your own design.
+For using the SLX Plugin in an existing project, a couple of additional
+Tcl commands should be added to your design’s Tcl files to steer Vitis HLS -
+see <a class="reference internal" href="instructions.html#vitis-tcl-proj"><span class="std std-ref">Existing Vitis HLS Command Line Project (Tcl)</span></a> or <a class="reference internal" href="instructions.html#vitis-gui-proj"><span class="std std-ref">Existing Vitis HLS GUI Project</span></a> for details. In
+<code class="docutils literal notranslate"><span class="pre">dimension_reduction</span></code> <code class="docutils literal notranslate"><span class="pre">run_hls.tcl</span></code> the additions are:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># 1. Variable pointing at the plugin location
+set slxplugin [file normalize $::env(SLX_VITIS_PLUGIN_HOME)]
+
+# 2. Include slxplugin.h when compiling the design file
+add_files code.cpp -cflags &quot;-include $slxplugin/include/slxplugin.h&quot;
+
+# 3. Add slxplugin.so using Vitis HLS injection mechanism
+#    - $slx_options are solution-specific options, and -slx-remove-directives
+#      is to remove the directive if it is not being used for a solution
+set ::LLVM_CUSTOM_CMD [concat \
+    {$LLVM_CUSTOM_OPT -load} $slxplugin/lib/slxplugin.so \
+    $slx_options -slx-remove-directives \
+    {$LLVM_CUSTOM_INPUT -o $LLVM_CUSTOM_OUTPUT}]
+</pre></div>
+</div>
+<p>Afterwards, using the loop interchange directive in the source code is very
+simple. Just add <code class="docutils literal notranslate"><span class="pre">_SLXLoopInterchange();</span></code> (note the C function call style
+syntax <a class="footnote-reference brackets" href="#f1" id="id1">1</a>) to a loop nest, under the loop level
+that you want to interchange with its immediate parent loop.
+The following code shows how this is done for a loop nest composed of the outer
+<code class="docutils literal notranslate"><span class="pre">loop_out</span></code> and the inner <code class="docutils literal notranslate"><span class="pre">loop_in</span></code> loops. Since the directive is added under
+the latter, the transformation will make <code class="docutils literal notranslate"><span class="pre">loop_in</span></code> the outer loop and <code class="docutils literal notranslate"><span class="pre">loop_out</span></code>
+the inner loop. This will effectively transform the <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">then</span> <span class="pre">j</span></code> iteration
+order into <code class="docutils literal notranslate"><span class="pre">j</span> <span class="pre">then</span> <span class="pre">i</span></code>.</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="nl">loop_out</span><span class="p">:</span><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nl">loop_in</span><span class="p">:</span><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">_SLXLoopInterchange</span><span class="p">();</span>
+    <span class="n">acc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">acc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+  <span class="p">}}</span>
+</pre></div>
+</div>
+<p class="rubric">Footnotes</p>
+<dl class="footnote brackets">
+<dt class="label" id="f1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>The C function call style syntax will be modified in a future release
+to be syntactically closer to Xilinx HLS pragmas.</p>
+</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="instructions.html" class="btn btn-neutral float-right" title="Instructions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="intro.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Silexica GmbH
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

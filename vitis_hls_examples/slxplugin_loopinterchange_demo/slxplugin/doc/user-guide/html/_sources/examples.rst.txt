@@ -1,0 +1,227 @@
+.. _examples:
+
+Examples
+========
+
+This chapter describes the code shipped in the ``examples`` folder.
+The examples illustrate how loop interchanging can improve the
+performance of a design, and how the SLX Plugin can be used within
+Vitis HLS to perform the interchange.
+
+.. _dimension_reduction:
+
+Dimension reduction (``dimension_reduction``)
+---------------------------------------------
+
+Dimension reduction combines information from multiple dimensions to a smaller
+number, typically as a lossy operation resulting in denser information.
+Dimensionality reduction is common in fields that deal with large numbers of
+observations and/or large numbers of variables, such as signal processing,
+speech recognition, neuroinformatics, and bioinformatics
+
+In ``code.cpp`` we see the standard way to write a 2D to 1D reduction in
+software.
+
+.. code-block:: C
+
+   loop_out:for (int i = 0; i < N; i += 1) {
+       loop_in:for (int j = 0; j < N; j += 1) {
+           acc[i] = acc[i] + data[i][j];
+   }}
+
+In the inner loop, the ``acc[i] = acc[i] + ...`` means that the ``acc[i]``
+computed in the previous iteration has to be available, and the ``+`` operation
+has to produce a new ``acc[i]`` value in the current iteration that will
+be stored in memory.
+As the operation has to complete before the operation in the next cycle can begin, its latency always contributes to the II of the loop. If it is the slowest operation contributing, then it is the operation that extends the II.
+
+This can be seen when different clock frequencies are used.
+For example, when the clock is set to 85MHz an ``II=1`` is achieved because the
+``+`` then completes within a cycle, alongside the other contributors to the II.
+As the clock frequency goes up, the operation becomes multicycle. At 333MHz
+this increases up to ``II=7``.
+This can be see by comparing result tables ``0.vanilla`` (333MHz) and
+``3.vanilla`` (85MHz) in ``latency.ref``.
+
+This is where ``_SLXLoopInterchange`` helps. If the inner and outer loop
+iteration is swapped, the same result is produced but the operation schedule
+and corresponding timing is very different.
+By doing this, the ``acc[i]`` value being read is that produced from the
+previous time the inner loop in its entirety executed. This means the
+``+`` operation no longer has to complete within the II of the inner loop.
+At both 85MHz and 333MHz an ``II=1`` is achieved when the loops are
+interchanged.
+This can be see by comparing result tables ``2.interchange`` (333MHz) and
+``5.interchange`` (85MHz) in ``latency.ref``.
+
+In sum, the fact that there is a loop carried dependency in the inner loop,
+the iteration order of the loops, the latency of involved operations, and
+a high frequency set conditions for having a bad II. However, by using
+``_SLXLoopInterchange`` the loop carried dependency is removed from the inner
+loop and an optimal pipeline ``II=1`` is achieved.
+
+DFT and variants (``dft``)
+--------------------------
+
+The discrete Fourier transform (DFT) is perhaps the most essential tool in
+signal processing. It is used to compute a signal's frequency spectrum and a
+system's frequency domain response.
+This allows reflecting on and analyzing information encoded in a signal's
+frequency, phase and amplitude as well as on a system's capabilities to
+react to such type of signals.
+There are several ways to implement a DFT, including the versatile and
+computation efficient fast Fourier transform (FFT) which is a basic block for
+many applications in wireless telecommunications, audio processing, radars,
+among many others.
+
+The example in this folder is a non-optimized DFT implementation, written
+in the style that closely matches the algorithm specification:
+
+.. code-block:: C
+
+   loop_freq:for (i = 0; i < N; i += 1) {
+       temp_real[i] = 0;
+       temp_imag[i] = 0;
+       // (2 * pi * i)/N
+       w = (2.0 * 3.141592653589 / N) * (TEMP_TYPE)i;
+       // Calculate the jth frequency sample_sequentially
+       loop_calc:for (j = 0; j < N; j += 1) {
+           c = cos(j * w);
+           s = sin(j * w);
+           // Multiply the current phasor with the appropriate input sample
+           // and keep a running sum
+           temp_real[i] += (sample_real[j] * c - sample_imag[j] * s);
+           temp_imag[i] += (sample_real[j] * s + sample_imag[j] * c);
+       }
+   }
+
+The inner loop contains two important loop carried dependencies,
+``temp_real[i] +=`` and ``temp_imag[i]``, of floating-point values.
+When pipelined, these addition operations contribute to the II of the inner
+loop, and if the addition is a multi-cycle operation then the II will also
+be multicycle - see the related discussion in the :ref:`dimension_reduction`
+example.
+The application will then benefit from ``_SLXLoopInterchange`` because
+the loop carried dependencies will then move to the outer loop and no
+longer contribute to the II of the inner loop.
+This is shown in the two ``dft`` variants provided that are provided in
+the package.
+
+The effect of relocating the loop carried dependency is better seen in the
+``perfectized`` example.
+This example is the result of applying a loop perfectization transformation
+to the code excerpt shown above.
+This way, ``_SLXLoopInterchange`` can be applied successfully,
+as can be seen in ``latency.ref`` where ``loop_calc`` is now the
+reported outer loop. Comparing the non-interchanged ``1.nointerchange`` inner loop
+``II=9`` to the ``2.interchange`` inner loop ``II=1`` shows the benefit of performing
+the interchange.
+
+The ``orig`` example is the original software implementation from the
+code excerpt.
+This example leads to a couple of interesting effects with the SLX Plugin.
+On the one hand, the loops are not perfectly nested so applying an
+interchange is not possible without perfectizing the loop nest.
+On the other hand, the application of IR design optimization options
+changes the code structure so that other Vitis HLS transformations
+kick in. These transformations also help to achieve a good ``II=1``
+in spite of the loop carried dependency.
+This is visible in the ``latency.ref`` results where both ``1.nointerchange``
+and 2.interchange achieve ``II=1``. Note that ``2.interchange``
+reports the loops in their non-interchanged order, meaning that the
+interchange transformation was not performed.
+
+
+BOTDA: Brillouin optical time domain analyzer (``botda``)
+---------------------------------------------------------
+
+BOTDA sensors are used for temperature and strain monitoring of oil & gas
+pipelines, bridges, dams, security fences and power lines. They are excellent
+for detecting corrosion, buckling, down hole, micro cracks, and leakages in
+pipelines. It can also be used for fire detection and improve efficiency in
+oil refineries.
+
+The example contains a linear support vector regression (LSVR) function that
+is the algorithm's hotspot. SVR and LSVR are based on matrix-vector
+multiplication, which makes them good candidates for pipelining and
+parallelization from a hardware perspective.
+
+The code can be found in ``botda.cpp``. The hotspot function ``linearSVR()``
+implements the SVR algorithm that aims to apply the regression to the data.
+Two versions of the algorithm, ``orig`` and ``split`` are available. ``orig``
+implements a naive version of the algorithm, ``split`` implements a version
+where the main loop nest has been divided in order to reduce the inner loop
+carried dependencies.
+
+The existence of a third loop ``L3`` in this second example does not reduce
+performance, because it allows for the main loop nest to be perfectly nested,
+thus providing more efficient optimizations.
+However, even after splitting, the hotspot still has an inner loop
+carried dependency ``partial_sum[i] +=`` that contributes to an ``II=9``.
+Loop interchange relocates the dependency to the outer loop, allowing
+for an improved ``II=1`` and an improved loop nest latency through more
+efficient pipelining.
+
+MRI reconstruction (``mri/reconstruction``)
+-------------------------------------------
+
+MRI reconstruction transforms the raw data acquired by an MRI scanner into images
+that can be interpreted clinically. There are several methods of scanning and
+interpreting the results. The algorithm included here performs an anatomically
+constrained image reconstruction of non-Cartesian (spiral) scan data which has
+only recently been made possible due to its high computational intensity.
+The design is based on a conjugate gradient algorithm which determines the output
+voxels iteratively to improve the value of a cost function.
+Our example accelerates the first step of the three steps in this algorithm. This
+step calculates a convolution kernel and is the most computationally intensive part
+of the algorithm since it traverses the outer loop ``8 * N`` times.
+Interchanging the two loops removes the dependency when accumulating the output
+data in the destination arrays ``rQ`` and ``iQ`` from the inner loop.
+This allows for an ``II=1`` compared to an ``II=5`` in the original code.
+
+SHA-3 algorithm (``tiny_sha3``)
+-------------------------------
+
+SHA stands for secure hash algorithm. It used for creating secure hashing of
+data and certificate files. Every piece of data produces a unique hash that is
+thoroughly non-duplicable by any other piece of data.
+``tiny_sha3`` is a small implementation of the FIPS 202 and SHA3 hash function.
+
+In ``sha3.c`` is where the heavy computation happens. The hotspot starts at the
+following loop header in function ``sha3_keccakf``:
+
+.. code-block:: C
+ 
+   void sha3_keccakf(uint64_t st[25]) {
+       ...
+       for (r = 0; r < KECCAKF_ROUNDS; r++) {
+           for (i = 0; i < 5; i++)
+                bc[i] = st[i] ^ st[i + 5] ^ st[i + 10] ^ st[i + 15] ^ st[i + 20];
+           for (i = 0; i < 5; i++) {
+                t = bc[(i + 4) % 5] ^ ROTL64(bc[(i + 1) % 5], 1);
+                for (j = 0; j < 25; j += 5)
+                    st[j + i] ^= t;
+           }
+           ...
+
+       }
+
+Vitis HLS  automatically applies the HLS ``pipeline`` directive to that loop
+and so all inner loops are fully unrolled.
+Other HLS compiler optimizations are performed, resulting in 25 values being
+loaded from memory for variable ``st`` once per iteration, near the start of
+the iteration.
+Then near the end of the iteration 25 values are stored to ``st``.
+All intermediate stores are replaced by internal local store of data that is
+implemented using flip-flops (FFs).
+
+When the SLX Plugin's IR design optimizations are applied, Vitis HLS sees that
+it can further load values from ``st`` into FFs once before the loop starts,
+and replace all stores in the loop body by stores that occur after the loop
+completes.
+It can do this as it is certain that the loop body will be executed at least
+once.
+This means that the loop body does not contain any loads or stores for ``st``
+anymore, and so can be implemented in highly parallelizable logic
+This results in ``II=1`` and ``latency=24`` for the loop compared to ``II=26``
+and ``latency=624`` when not using the SLX Plugin.

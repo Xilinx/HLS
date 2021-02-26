@@ -1,0 +1,29 @@
+## 0.vanilla
+        |                       |  Latency (cycles) | Iteration|  Initiation Interval  |  Trip |          |
+        |       Loop Name       |   min   |   max   |  Latency |  achieved |   target  | Count | Pipelined|
+        |- loop_freq_loop_calc  |   589904|   589904|        90|          9|          1|  65536|       yes|
+        |- loop_out             |      257|      257|         3|          1|          1|    256|       yes|
+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
+|Total                |        4|    54|     9880|     9083|    0|
+
+## 1.nointerchange
+        |              |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |   Loop Name  |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        |- loop_freq   |    87551|    87551|       342|          -|          -|   256|        no|
+        | + loop_calc  |      325|      325|        71|          1|          1|   256|       yes|
+        |- loop_out    |      257|      257|         3|          1|          1|   256|       yes|
+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
+|Total                |        4|   132|    19286|    19163|    0|
+
+## 2.interchange
+        |              |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |   Loop Name  |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        |- loop_freq   |    87551|    87551|       342|          -|          -|   256|        no|
+        | + loop_calc  |      325|      325|        71|          1|          1|   256|       yes|
+        |- loop_out    |      257|      257|         3|          1|          1|   256|       yes|
+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
+|Total                |        4|   132|    19286|    19163|    0|
+

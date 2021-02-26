@@ -1,0 +1,51 @@
+Legal matter
+============
+
+Copyright notice and proprietary information
+--------------------------------------------
+
+© 2020 Silexica GmbH. All rights reserved. This software documentation contains
+confidential and proprietary information that is the property of Silexica GmbH.
+The software documentation is furnished under a license agreement and may be
+used or copied only in accordance with the terms of the license agreement. No
+part of the software documentation may be reproduced, transmitted, or
+translated, in any form or by any means, electronic, mechanical, manual,
+optical, or otherwise, without prior written permission of Silexica GmbH, or as
+expressly provided by the license agreement.
+
+Destination control statement
+-----------------------------
+
+All technical data contained in this publication is subject to the export
+control laws of the German Federal Republic. Disclosure to nationals of other
+countries contrary to Germany law is prohibited. It is the reader’s
+responsibility to determine the applicable regulations and to comply with them.
+
+Disclaimer
+----------
+
+SILEXICA GMBH, MAKES NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, WITH REGARD
+TO THIS MATERIAL, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+
+Trademarks
+----------
+
+Silexica and certain Silexica product names are trademarks of Silexica GmbH.
+All other product or company names may be trademarks of their respective
+owners.
+
+Third-Party links
+-----------------
+
+Any links to third-party websites included in this document are for your
+convenience only.  Silexica does not endorse and is not responsible for such
+websites and their practices, including privacy practices, availability, and
+content.
+
+Silexica GmbH
+-------------
+
+| Lichtstr. 25
+| 50825 Cologne, Germany
+| www.silexica.com

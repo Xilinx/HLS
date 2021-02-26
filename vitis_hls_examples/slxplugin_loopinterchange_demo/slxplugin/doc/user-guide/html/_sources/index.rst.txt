@@ -1,0 +1,18 @@
+.. SLX Plugin documentation master file.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+==============================
+SLX Plugin Guide v0.9
+==============================
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents
+
+   intro.rst
+   quick-start.rst
+   instructions.rst
+   examples.rst
+   slx-fpga.rst
+   legal.rst

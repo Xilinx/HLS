@@ -1,0 +1,16 @@
+## 0.vanilla: no LLVM_CUSTOM_CMD, no Xilinx directives (clock: 333MHz)
+        |                   |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |     Loop Name     |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        |- VITIS_LOOP_51_1  |      648|      648|        27|         27|          1|    24|       yes|
+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
+|Total                |        0|     0|     4199|     8564|    0|
+
+## 1.nointerchange: LLVM_CUSTOM_CMD -slx-prepare-interchange, no Xilinx directives (clock: 333MHz)
+        |                   |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |     Loop Name     |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        |- VITIS_LOOP_51_1  |       24|       24|         2|          1|          1|    24|       yes|
+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
+|Total                |        0|     0|     4777|     8937|    0|
+

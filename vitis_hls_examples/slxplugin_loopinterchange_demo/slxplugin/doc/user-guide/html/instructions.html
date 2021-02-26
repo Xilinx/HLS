@@ -1,0 +1,641 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Instructions &mdash; SLX Plugin 0.9 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="prev" title="Quickstart" href="quick-start.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> SLX Plugin
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick-start.html">Quickstart</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#supported-machines-and-requirements">Supported machines and requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#package-contents">Package contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#existing-vitis-hls-command-line-project-tcl">Existing Vitis HLS Command Line Project (Tcl)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#existing-vitis-hls-gui-project">Existing Vitis HLS GUI Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#main-option-combinations">Main option combinations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#loop-interchange-slxloopinterchange">Loop Interchange (<code class="docutils literal notranslate"><span class="pre">_SLXLoopInterchange</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#transformation-safety-and-legality">Transformation safety and legality</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ir-design-optimizations">IR design optimizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#options-reference-guide">Options reference guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slx-fpga.html">Use with SLX FPGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="legal.html">Legal matter</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SLX Plugin</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Instructions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/instructions.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="instructions">
+<span id="id1"></span><h1>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">¶</a></h1>
+<p>This section provides installation steps and instructions to use the SLX Plugin
+in stand-alone mode with Vitis 2020.2. For instructions to use the plugin with
+SLX FPGA, refer to the <a class="reference external" href="https://www.silexica.com/wp-content/uploads/SLX-FPGA-User-Guide-2020.3.pdf">SLX FPGA User Guide</a> after following the steps in
+the <a class="reference internal" href="#installation"><span class="std std-ref">Installation</span></a> section.</p>
+<div class="section" id="supported-machines-and-requirements">
+<h2>Supported machines and requirements<a class="headerlink" href="#supported-machines-and-requirements" title="Permalink to this headline">¶</a></h2>
+<p>The SLX Plugin currently supports <a class="footnote-reference brackets" href="#f1" id="id2">1</a> Ubuntu 18.04 on x86_64 architectures.
+The next steps assume that Ubuntu 18.04 has been installed on your machine.
+Since the SLX Plugin is an add-on for Vitis 2020.2, these steps also assume that
+Vitis is properly installed on your machine.</p>
+</div>
+<div class="section" id="package-contents">
+<h2>Package contents<a class="headerlink" href="#package-contents" title="Permalink to this headline">¶</a></h2>
+<p>Untar the provided SLX Plugin package. This should result in the following
+folder structure:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.
+└── slxplugin-x.y.z
+    ├── doc
+    ├── examples
+    ├── exports
+    ├── include
+    │   └── slxplugin.h
+    ├── lib
+    │   └── slxplugin.so
+    └── README
+</pre></div>
+</div>
+<p>The contents are as follows:</p>
+<ul class="simple">
+<li><p><em>doc</em>: the SLX Plugin documentation in html and pdf format.</p></li>
+<li><p><em>examples</em>: example designs that benefit from the SLX Plugin transformations
+and show the plugin in action.</p></li>
+<li><p><em>exports</em>: setup script. Source this script every time you want to use the
+plugin.</p></li>
+<li><p><em>include</em>: the SLX Plugin header file to be added via a Vitis HLS Tcl script
+to activate the plugin.</p></li>
+<li><p><em>lib</em>: the SLX Plugin library file to be added via a Vitis HLS Tcl script to
+activate the plugin.</p></li>
+<li><p><em>README</em>: file with quick pointers and guidelines.</p></li>
+</ul>
+</div>
+<div class="section" id="installation">
+<span id="id3"></span><h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Once the SLX Plugin is unpacked, no further installation is required.
+Just execute the following
+command in your Linux console. This allows our example scripts and SLX
+FPGA to locate the plugin files in your machine.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> exports
+</pre></div>
+</div>
+<p>This will set the environment variable <code class="docutils literal notranslate"><span class="pre">SLX_VITIS_PLUGIN_HOME</span></code> to the location
+of your SLX Plugin package.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p><code class="docutils literal notranslate"><span class="pre">SLX_VITIS_PLUGIN_HOME</span></code> is only set in the console session where the
+command is executed. Execute it in the console where you will execute
+Vitis HLS.
+If you open a new console, remember to execute the command again.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Add the command to your <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> if you want to automatically set
+<code class="docutils literal notranslate"><span class="pre">SLX_VITIS_PLUGIN_HOME</span></code> every time a new console is opened.</p>
+</div>
+<p>Afterwards, the SLX Plugin can be injected into the Vitis HLS compilation flow
+by adding just a few Tcl commands to an <a class="reference internal" href="#vitis-tcl-proj"><span class="std std-ref">Existing Vitis HLS Command Line Project (Tcl)</span></a> or an
+<a class="reference internal" href="#vitis-gui-proj"><span class="std std-ref">Existing Vitis HLS GUI Project</span></a>.
+If you use the SLX Plugin with SLX FPGA, read how to use the plugin with an
+<a class="reference internal" href="slx-fpga.html#slx-fpga-project"><span class="std std-ref">SLX FPGA Project</span></a>.</p>
+</div>
+<div class="section" id="existing-vitis-hls-command-line-project-tcl">
+<span id="vitis-tcl-proj"></span><h2>Existing Vitis HLS Command Line Project (Tcl)<a class="headerlink" href="#existing-vitis-hls-command-line-project-tcl" title="Permalink to this headline">¶</a></h2>
+<p>If your Vitis HLS project is a command line project based on Tcl, you can enable
+the plugin by adding the following commands to your script:</p>
+<div class="highlight-none notranslate" id="setup-tcl-script"><div class="highlight"><pre><span></span># 1. Variable pointing at the plugin location
+set slxplugin [file normalize $::env(SLX_VITIS_PLUGIN_HOME)]
+ 
+# 2. Add slxplugin.h
+#   - &lt;your-design-files&gt; refers to your C/C++ files
+add_files &lt;your-design-files&gt; -cflags &quot;-include $slxplugin/include/slxplugin.h&quot;
+
+# 3. Add slxplugin.so using Vitis HLS injection mechanism
+#   - &lt;slx-plugin-options&gt; refers to options provided by SLX Plugin
+set ::LLVM_CUSTOM_CMD [concat \
+    {$LLVM_CUSTOM_OPT -load} $slxplugin/lib/slxplugin.so \
+    &lt;slx-plugin-options&gt; \
+    {$LLVM_CUSTOM_INPUT -o $LLVM_CUSTOM_OUTPUT}]
+</pre></div>
+</div>
+<p>These three commands will activate the SLX Plugin for your design.
+They perform the following actions:</p>
+<ol class="arabic simple">
+<li><p>The first command sets a variable that points to the plugin installation
+directory.</p></li>
+<li><p>The second command adds the plugin header file that enables Vitis HLS
+compilation with the SLX Plugin directives.
+Replace <code class="docutils literal notranslate"><span class="pre">&lt;your-design-files&gt;</span></code> with your actual C/C++ files
+that contain additional SLX Plugin directives.</p></li>
+<li><p>The third command injects the plugin library file into the Vitis HLS
+synthesis process. This allows performing the transformations provided
+by the SLX Plugin.
+Replace <code class="docutils literal notranslate"><span class="pre">&lt;slx-plugin-options&gt;</span></code> with the SLX Plugin options for the current
+solution.
+For example, replace it with <code class="docutils literal notranslate"><span class="pre">-slx-prepare-for-interchange</span> <span class="pre">-slx-loop-interchange</span></code> when using the plugin with the  <code class="docutils literal notranslate"><span class="pre">_SLXLoopInterchange</span></code> directive.
+<code class="docutils literal notranslate"><span class="pre">csynth_design</span></code> applies these options during synthesis.
+Options currently supported by the SLX Plugin are described in the
+<a class="reference internal" href="#options"><span class="std std-ref">Options reference guide</span></a> section.</p></li>
+</ol>
+</div>
+<div class="section" id="existing-vitis-hls-gui-project">
+<span id="vitis-gui-proj"></span><h2>Existing Vitis HLS GUI Project<a class="headerlink" href="#existing-vitis-hls-gui-project" title="Permalink to this headline">¶</a></h2>
+<p>If you have an existing Vitis HLS GUI project, you need to perform two steps:</p>
+<ul>
+<li><p>in the GUI, update the <code class="docutils literal notranslate"><span class="pre">CFLAGS</span></code> in <code class="docutils literal notranslate"><span class="pre">Project</span></code> <em>-&gt;</em> <code class="docutils literal notranslate"><span class="pre">Project</span> <span class="pre">Settings</span></code>
+dialog, under the Synthesis tab.
+Add <code class="docutils literal notranslate"><span class="pre">-include</span> <span class="pre">$::env(SLX_VITIS_PLUGIN_HOME)/include/slxplugin.h</span></code> as shown
+in the picture:</p>
+<div class="figure align-default" id="id5">
+<img alt="SLX Plugin for Vitis HLS" src="_images/cflags.png" />
+<p class="caption"><span class="caption-text">Include the SLX Plugin header in CFLAGS.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+</li>
+<li><p>Add the code below to <code class="docutils literal notranslate"><span class="pre">scripts/vitis_hls_init.tcl</span></code>. You can create the file
+in the GUI using <code class="docutils literal notranslate"><span class="pre">File</span></code> <em>-&gt;</em> <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">File</span></code>. If the <code class="docutils literal notranslate"><span class="pre">scripts</span></code> folder is not
+yet present, click the <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">Folder</span></code> icon to add it. Create the
+<code class="docutils literal notranslate"><span class="pre">vitis_hls_init.tcl</span></code> in that folder. The file opens in the GUI but is not
+editable there. Use <code class="docutils literal notranslate"><span class="pre">File</span></code> <em>-&gt;</em> <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">File</span></code> again to open the dialog and
+go to the <code class="docutils literal notranslate"><span class="pre">scripts</span></code> folder. Right-click on <code class="docutils literal notranslate"><span class="pre">vitis_hls_init.tcl</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Copy</span> <span class="pre">location</span></code> to get the path. Please then open the file with your
+favorite text editor to add the code:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># add slxplugin.so using Vitis HLS injection mechanism
+set ::LLVM_CUSTOM_CMD [concat \
+    {$LLVM_CUSTOM_OPT -load} $::env(SLX_VITIS_PLUGIN_HOME)/lib/slxplugin.so \
+    &lt;slx-plugin-options&gt; \
+    {$LLVM_CUSTOM_INPUT -o $LLVM_CUSTOM_OUTPUT}]
+</pre></div>
+</div>
+</li>
+</ul>
+<p>These are adaptations of the commands already explained in the previous section
+for using the SLX Plugin with an <a class="reference internal" href="#vitis-tcl-proj"><span class="std std-ref">Existing Vitis HLS Command Line Project (Tcl)</span></a>.
+Make sure that you are modifying the file that corresponds to your active
+solution, and remember to adapt <code class="docutils literal notranslate"><span class="pre">&lt;slx-plugin-options&gt;</span></code> as explained before.</p>
+</div>
+<div class="section" id="main-option-combinations">
+<span id="option-sets"></span><h2>Main option combinations<a class="headerlink" href="#main-option-combinations" title="Permalink to this headline">¶</a></h2>
+<p>The most useful sets of SLX Plugin options to use as <code class="docutils literal notranslate"><span class="pre">&lt;slx-plugin-options&gt;</span></code>
+are:</p>
+<ul>
+<li><p>To use <a class="reference internal" href="#interchange"><span class="std std-ref">Loop Interchange (_SLXLoopInterchange)</span></a>, enable with:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>-slx-prepare-for-interchange -slx-loop-interchange
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>To have the <code class="docutils literal notranslate"><span class="pre">_SLXLoopInterchange()</span></code> directive in the source code but skip
+its application or ignore a failure to apply it: add
+<code class="docutils literal notranslate"><span class="pre">-slx-remove-directives</span></code> to the previous set.</p></li>
+</ul>
+</li>
+<li><p>To try out <a class="reference internal" href="#tidy-up"><span class="std std-ref">IR design optimizations</span></a>, enable with:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>-slx-prepare-for-interchange -slx-prepare-all
+</pre></div>
+</div>
+</li>
+</ul>
+<p>The options are explained at the end of this chapter in the <a class="reference internal" href="#options"><span class="std std-ref">Options reference guide</span></a>
+section.</p>
+</div>
+<div class="section" id="loop-interchange-slxloopinterchange">
+<span id="interchange"></span><h2>Loop Interchange (<code class="docutils literal notranslate"><span class="pre">_SLXLoopInterchange</span></code>)<a class="headerlink" href="#loop-interchange-slxloopinterchange" title="Permalink to this headline">¶</a></h2>
+<p>The SLX Plugin augments Vitis HLS with an additional optimization directive
+for achieving higher performance.
+The new synthesis directive is called <code class="docutils literal notranslate"><span class="pre">_SLXLoopInterchange</span></code> and can be applied
+to a system of nested loops for performing a loop interchange.
+Loop interchange is a transformation that operates by exchanging the order of
+two iteration variables in the loop nest, effectively interchanging the
+iteration order in the loop system.</p>
+<p><code class="docutils literal notranslate"><span class="pre">_SLXLoopInterchange</span></code> is used in the source code like any other Xilinx
+HLS pragma. When added to a loop that is part of a loop nest, the SLX Plugin
+will interchange the target loop and its immediate parent.
+The target loop is defined as the loop that contains <code class="docutils literal notranslate"><span class="pre">_SLXLoopInterchange</span></code>
+within its direct body’s scope.
+The directive is using the C function call style syntax <a class="footnote-reference brackets" href="#f2" id="id4">2</a> as shown in the
+next few examples.
+The <code class="docutils literal notranslate"><span class="pre">&lt;slx-plugin-options&gt;</span></code> to apply this directive are
+<code class="docutils literal notranslate"><span class="pre">-slx-prepare-for-interchange</span> <span class="pre">-slx-loop-interchange</span></code>.</p>
+<p>First, consider the code excerpt shown below:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="nl">LoopN</span><span class="p">:</span> <span class="k">for</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+<span class="nl">LoopM</span><span class="p">:</span>   <span class="k">for</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="n">_SLXLoopInterchange</span><span class="p">();</span>
+           <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">compute</span><span class="p">(</span> <span class="n">in</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="p">);</span>
+       <span class="p">}}</span>
+</pre></div>
+</div>
+<p>It has a nested loop composed of <code class="docutils literal notranslate"><span class="pre">LoopN</span></code> (the inner loop) and <code class="docutils literal notranslate"><span class="pre">LoopM</span></code>
+(the outer loop).
+The <code class="docutils literal notranslate"><span class="pre">_SLXLoopInterchange</span></code> directive is added under <code class="docutils literal notranslate"><span class="pre">LoopM</span></code>, which turns
+into the target to be interchanged with its immediate parent.
+Since <code class="docutils literal notranslate"><span class="pre">LoopM</span></code> has only one parent, the action leads to interchange
+<code class="docutils literal notranslate"><span class="pre">LoopM</span></code> with <code class="docutils literal notranslate"><span class="pre">LoopN</span></code>.
+<code class="docutils literal notranslate"><span class="pre">LoopM</span></code> will be transformed into the outer loop and <code class="docutils literal notranslate"><span class="pre">LoopN</span></code>
+into the inner one.
+This will effectively transform the <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">then</span> <span class="pre">j</span></code> iteration order into
+<code class="docutils literal notranslate"><span class="pre">j</span> <span class="pre">then</span> <span class="pre">i</span></code>.</p>
+<p>For the following code example, things work as follows:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="nl">LoopO</span><span class="p">:</span> <span class="k">for</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">o</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+<span class="nl">LoopN</span><span class="p">:</span>   <span class="k">for</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="n">_SLXLoopInterchange</span><span class="p">();</span>
+<span class="nl">LoopM</span><span class="p">:</span>     <span class="k">for</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+             <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">compute</span><span class="p">(</span> <span class="n">in</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="p">);</span>
+       <span class="p">}}}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">_SLXLoopInterchange</span></code> is added under <code class="docutils literal notranslate"><span class="pre">LoopN</span></code>, which turns into the target
+to be interchanged with <code class="docutils literal notranslate"><span class="pre">LoopO</span></code>. This will effectively transform the
+<code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">then</span> <span class="pre">j</span> <span class="pre">then</span> <span class="pre">k</span></code> iteration order into <code class="docutils literal notranslate"><span class="pre">j</span> <span class="pre">then</span> <span class="pre">i</span> <span class="pre">then</span> <span class="pre">k</span></code>.
+Similarly, <code class="docutils literal notranslate"><span class="pre">_SLXLoopInterchange</span></code> could be applied to <code class="docutils literal notranslate"><span class="pre">LoopM</span></code> if the
+directive is moved two lines down,
+which would in turn switch the iteration order to <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">then</span> <span class="pre">k</span> <span class="pre">then</span> <span class="pre">j</span></code>.</p>
+<p>The loop interchange transformation has a good impact on a design’s
+performance when by interchanging iteration orders one relaxes conditions
+that limit parallelism or pipelining. If this is possible for a hotspot loop,
+then one can achieve a good improvement in initiation intervals and latency.
+The following code excerpt shows a situation that benefits from
+<code class="docutils literal notranslate"><span class="pre">_SLXLoopInterchange</span></code>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="nl">LoopN</span><span class="p">:</span>  <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+<span class="nl">LoopM</span><span class="p">:</span>    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">_SLXLoopInterchange</span><span class="p">();</span>
+            <span class="n">acc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">acc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+        <span class="p">}}</span>
+</pre></div>
+</div>
+<p>In the code there is a loop carried dependency on variable <code class="docutils literal notranslate"><span class="pre">acc</span></code> in
+the inner <code class="docutils literal notranslate"><span class="pre">LoopM</span></code> that blocks potential pipelining with II=1 under
+certain circumstances.
+Interchanging the loop moves the dependency from the inner to the outer loop
+<code class="docutils literal notranslate"><span class="pre">LoopN</span></code>, effectively relaxing the constraint that blocks achieving pipeline
+with II=1. For more information about this example and other cases that
+benefit from <code class="docutils literal notranslate"><span class="pre">_SLXLoopInterchange</span></code>, refer to the <a class="reference internal" href="examples.html#examples"><span class="std std-ref">Examples</span></a></p>
+<p><code class="docutils literal notranslate"><span class="pre">_SLXLoopInterchange</span></code> can be used alone or in combination with other
+Vitis HLS synthesis directives and constraints to achieve reduced latency and increased throughput.
+When this happens, other Vitis HLS loop directives in the same loop of a
+<code class="docutils literal notranslate"><span class="pre">_SLXLoopInterchange</span></code> migrate to the new loop level after the interchange
+is performed. This means that the following code:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="nl">LoopN</span><span class="p">:</span> <span class="k">for</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+<span class="nl">LoopM</span><span class="p">:</span>   <span class="k">for</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="n">_SLXLoopInterchange</span><span class="p">();</span>
+           <span class="cp">#pragma HLS pipeline</span>
+           <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">compute</span><span class="p">(</span> <span class="n">in</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="p">);</span>
+       <span class="p">}}</span>
+</pre></div>
+</div>
+<p>will be transformed to:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="nl">LoopM</span><span class="p">:</span> <span class="k">for</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+         <span class="cp">#pragma HLS pipeline</span>
+<span class="nl">LoopN</span><span class="p">:</span>   <span class="k">for</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">compute</span><span class="p">(</span> <span class="n">in</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="p">);</span>
+       <span class="p">}}</span>
+</pre></div>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>If the option <code class="docutils literal notranslate"><span class="pre">-slx-loop-interchange</span></code> or <code class="docutils literal notranslate"><span class="pre">-slx-remove-directives</span></code>
+is not used, Vitis HLS will fail during synthesis with an error:
+<code class="docutils literal notranslate"><span class="pre">WARNING:</span> <span class="pre">[HLS</span> <span class="pre">200-412]</span> <span class="pre">1_VALIDATOR__call_node_lacks_subCdfg</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Stack</span> <span class="pre">dump:</span> <span class="pre">Running</span> <span class="pre">pass</span> <span class="pre">'CDFG</span> <span class="pre">Construction</span> <span class="pre">Pass'</span> <span class="pre">on</span> <span class="pre">module</span> <span class="pre">'a.o.2.bc'.</span></code>.
+Please check that the <code class="docutils literal notranslate"><span class="pre">LLVM_CUSTOM_CMD</span></code> is being set properly -
+this should appear in the Vitis HLS console output.</p>
+</div>
+<div class="section" id="transformation-safety-and-legality">
+<h3>Transformation safety and legality<a class="headerlink" href="#transformation-safety-and-legality" title="Permalink to this headline">¶</a></h3>
+<p>Performing a loop interchange is not always safe or legal.
+Exchanging the iteration order of a loop nest could sometimes lead to an
+invalid computation.
+The SLX Plugin incorporates a layer to detect transformation safety and
+legality and rejects it when it is certain the interchange can’t be applied.
+The following rules apply:</p>
+<ul>
+<li><p>Loop interchange is limited to perfect loop nests. This limitation will be
+relaxed in a future release.</p></li>
+<li><p>Dependency inversion issue: the transformation is rejected if by
+interchanging you will compute a value
+either earlier or later compared to its original use point. For example,
+you are reading from a row that is only updated in the future to compute a
+value that is needed in the present. <code class="docutils literal notranslate"><span class="pre">SLXLoopInterchange</span></code> checks for
+legality in this case and rejects the transformation.</p></li>
+<li><p>Floating point associativity issue: floating point computation
+is not necessarily associative. That is, <code class="docutils literal notranslate"><span class="pre">(a</span> <span class="pre">+</span> <span class="pre">b)</span> <span class="pre">+</span> <span class="pre">c</span></code> is not necessarily
+equal to <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">+</span> <span class="pre">(b</span> <span class="pre">+</span> <span class="pre">c)</span></code>. In many cases, this only leads to minor precision
+differences. <code class="docutils literal notranslate"><span class="pre">SLXLoopInterchange</span></code> won’t try to reason about the user’s
+intentions from this perspective. The suggested method is to address this
+via testbenches. If your testbench fails, disable <code class="docutils literal notranslate"><span class="pre">SLXLoopInterchange</span></code>.</p></li>
+<li><p>Loop flatten conflict: when applied, <code class="docutils literal notranslate"><span class="pre">SLXLoopInterchange</span></code> disables the
+Vitis HLS loop flatten transformation. By default, loop flatten is
+automatically applied by Vitis HLS to perfect or semi-perfect loop nests.
+Additionally, it can be controlled with
+<code class="docutils literal notranslate"><span class="pre">set_directive_loop_flatten</span></code> in a Tcl directives script or with
+<code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">loop_flatten</span></code> in the C/C++ source code. If a
+<code class="docutils literal notranslate"><span class="pre">_SLXLoopInterchange</span></code> is applied to the same loop then a warning is
+reported:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>``WARNING: [SLX] HLS flatten for &#39;&lt;loop&gt;&#39;(&lt;location&gt;) is disabled as the loop is transformed into a do-while loop``
+</pre></div>
+</div>
+</li>
+<li><p>Loops composed of statically unknown bounds are not supported. If the safety
+check is not able to tell for certain that an access will be properly bounded
+when accessing the array, the loop gets rejected. In the following example,
+it is not possible to tell that <code class="docutils literal notranslate"><span class="pre">m&lt;=10</span></code>. Because <code class="docutils literal notranslate"><span class="pre">a[0][10]</span></code> addresses the
+same element as <code class="docutils literal notranslate"><span class="pre">a[1][0]</span></code> in the C memory model, there is a possibility
+that changing the iteration order will cause some data to be re-written
+by out-of-bound accesses. For this reason, it is forbidden.</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">][</span><span class="mi">10</span><span class="p">];</span>
+<span class="kt">void</span> <span class="nf">test</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+   <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span>
+     <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span> <span class="c1">// This access is causing an issue</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="ir-design-optimizations">
+<span id="tidy-up"></span><h2>IR design optimizations<a class="headerlink" href="#ir-design-optimizations" title="Permalink to this headline">¶</a></h2>
+<p>The SLX Plugin contains a few automatic compiler transformations that help
+improve an HLS design’s internal program representation before the RTL code is
+generated.
+The most interesting scenario is when it helps to booster Vitis HLS’
+capabilities for automatic relocation of loop invariant memory accesses.
+While this doesn’t apply to all HLS designs, some designs benefit from
+improved results when, for example, expensive memory accesses are manipulated
+in a way that they end up outside of a loop nest.
+In particular, if the loop nest happens to be a computation hotspot,
+this can be of tremendous help to improve latency and throughput without
+manual C/C++ source code changes.</p>
+<p>This feature doesn’t require adding directives to source code. It is enabled
+by using the options <code class="docutils literal notranslate"><span class="pre">-slx-prepare-for-interchange</span></code> and <code class="docutils literal notranslate"><span class="pre">-slx-prepare-all</span></code>
+in the Tcl command that injects the SLX Plugin to the Vitis compilation process.
+If both options are specified, then IR design optimizations are
+applied to all functions in the design. If <code class="docutils literal notranslate"><span class="pre">-slx-prepare-all</span></code> is not
+specified, then IR design optimizations will only apply to functions that
+contain an <code class="docutils literal notranslate"><span class="pre">_SLXLoopInterchange</span></code> directive in one of their loops.
+For more information about the Tcl command, see <a class="reference internal" href="#vitis-tcl-proj"><span class="std std-ref">Existing Vitis HLS Command Line Project (Tcl)</span></a>.
+For more information about the options, see the <a class="reference internal" href="#options"><span class="std std-ref">Options reference guide</span></a>.</p>
+<p>An example that shows and explains an IR design optimization is provided in
+<a class="reference internal" href="examples.html#examples"><span class="std std-ref">Examples</span></a>. Refer to the <code class="docutils literal notranslate"><span class="pre">tiny-sha3</span></code> folder.</p>
+</div>
+<div class="section" id="options-reference-guide">
+<span id="options"></span><h2>Options reference guide<a class="headerlink" href="#options-reference-guide" title="Permalink to this headline">¶</a></h2>
+<p>The SLX Plugin currently supports the following options that control its
+behavior:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">-slx-prepare-for-interchange</span></code>: perform IR design optimization passes
+and enablers for loop interchange. By default, this only applies for functions
+calling <code class="docutils literal notranslate"><span class="pre">_SLXLoopInterchange()</span></code>. To change the default behavior, see
+<code class="docutils literal notranslate"><span class="pre">-slx-prepare-all</span></code>. It reports in the console if it knows it will result in
+a Xilinx HLS pragma not applying:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>``WARNING: [SLX] HLS flatten for &#39;&lt;loop&gt;&#39;(&lt;location&gt;) is disabled as the loop is transformed into a do-while loop``
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-slx-prepare-all</span></code>: only valid in combination with
+<code class="docutils literal notranslate"><span class="pre">-slx-prepare-for-interchange</span></code>. When given, IR design optimization passes
+are applied to all functions and not only those containing
+<code class="docutils literal notranslate"><span class="pre">_SLXLoopInterchange()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-slx-loop-interchange</span></code>: perform loop interchange if possible.
+By default, only do so for functions calling <code class="docutils literal notranslate"><span class="pre">_SLXLoopInterchange()</span></code>.
+It reports in the console if the interchange was successful:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>``SLX-INFO: _SLXLoopInterchange applied successfully``
+``SLX-ERROR: _SLXLoopInterchange was requested but was not successfully applied``
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-slx-fatal-unapplied-interchange</span></code>: only valid in combination with
+<code class="docutils literal notranslate"><span class="pre">-slx-loop-interchange</span></code>. The default is to issue an <code class="docutils literal notranslate"><span class="pre">ERROR</span></code> if the
+<code class="docutils literal notranslate"><span class="pre">_SLXLoopInterchange()</span></code> is not applied, but when given with the <code class="docutils literal notranslate"><span class="pre">=FALSE</span></code>
+suffix a non-fatal <code class="docutils literal notranslate"><span class="pre">WARNING</span></code> is produced instead.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-slx-remove-directives</span></code>: delete <code class="docutils literal notranslate"><span class="pre">_SLXLoopInterchange()</span></code>. This is useful
+if the current solution should not include loop-interchange, or if
+loop-interchange was not possible and you wish to ignore this.</p></li>
+</ul>
+<p>For example, if all options are applied, the last command in the setup Tcl
+script will be:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># add slxplugin.so using Vitis HLS injection mechanism
+set ::LLVM_CUSTOM_CMD [concat \
+    {$LLVM_CUSTOM_OPT -load} $slxplugin/lib/slxplugin.so \
+    -slx-prepare-for-interchange \
+    -slx-prepare-all \
+    -slx-loop-interchange \
+    -slx-remove-directives \
+    {$LLVM_CUSTOM_INPUT -o $LLVM_CUSTOM_OUTPUT}]
+</pre></div>
+</div>
+<p class="rubric">Footnotes</p>
+<dl class="footnote brackets">
+<dt class="label" id="f1"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
+<dd><p>The SLX Plugin is only officially supported on Ubuntu 18.04 on x86_64
+architectures. However, it is also known to work with Ubuntu 16.04. Try
+Ubuntu 16.04 at your own risk.</p>
+</dd>
+<dt class="label" id="f2"><span class="brackets"><a class="fn-backref" href="#id4">2</a></span></dt>
+<dd><p>The C function call style syntax will be modified in a future release
+to be syntactically closer to Xilinx HLS pragmas.</p>
+</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="quick-start.html" class="btn btn-neutral float-left" title="Quickstart" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Silexica GmbH
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

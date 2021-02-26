@@ -1,0 +1,423 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Examples &mdash; SLX Plugin 0.9 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Use with SLX FPGA" href="slx-fpga.html" />
+    <link rel="prev" title="Instructions" href="instructions.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> SLX Plugin
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick-start.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instructions.html">Instructions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dimension-reduction-dimension-reduction">Dimension reduction (<code class="docutils literal notranslate"><span class="pre">dimension_reduction</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dft-and-variants-dft">DFT and variants (<code class="docutils literal notranslate"><span class="pre">dft</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#botda-brillouin-optical-time-domain-analyzer-botda">BOTDA: Brillouin optical time domain analyzer (<code class="docutils literal notranslate"><span class="pre">botda</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mri-reconstruction-mri-reconstruction">MRI reconstruction (<code class="docutils literal notranslate"><span class="pre">mri/reconstruction</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sha-3-algorithm-tiny-sha3">SHA-3 algorithm (<code class="docutils literal notranslate"><span class="pre">tiny_sha3</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="slx-fpga.html">Use with SLX FPGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="legal.html">Legal matter</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SLX Plugin</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Examples</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/examples.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="examples">
+<span id="id1"></span><h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<p>This chapter describes the code shipped in the <code class="docutils literal notranslate"><span class="pre">examples</span></code> folder.
+The examples illustrate how loop interchanging can improve the
+performance of a design, and how the SLX Plugin can be used within
+Vitis HLS to perform the interchange.</p>
+<div class="section" id="dimension-reduction-dimension-reduction">
+<span id="dimension-reduction"></span><h2>Dimension reduction (<code class="docutils literal notranslate"><span class="pre">dimension_reduction</span></code>)<a class="headerlink" href="#dimension-reduction-dimension-reduction" title="Permalink to this headline">¶</a></h2>
+<p>Dimension reduction combines information from multiple dimensions to a smaller
+number, typically as a lossy operation resulting in denser information.
+Dimensionality reduction is common in fields that deal with large numbers of
+observations and/or large numbers of variables, such as signal processing,
+speech recognition, neuroinformatics, and bioinformatics</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">code.cpp</span></code> we see the standard way to write a 2D to 1D reduction in
+software.</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="nl">loop_out</span><span class="p">:</span><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nl">loop_in</span><span class="p">:</span><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">acc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">acc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+<span class="p">}}</span>
+</pre></div>
+</div>
+<p>In the inner loop, the <code class="docutils literal notranslate"><span class="pre">acc[i]</span> <span class="pre">=</span> <span class="pre">acc[i]</span> <span class="pre">+</span> <span class="pre">...</span></code> means that the <code class="docutils literal notranslate"><span class="pre">acc[i]</span></code>
+computed in the previous iteration has to be available, and the <code class="docutils literal notranslate"><span class="pre">+</span></code> operation
+has to produce a new <code class="docutils literal notranslate"><span class="pre">acc[i]</span></code> value in the current iteration that will
+be stored in memory.
+As the operation has to complete before the operation in the next cycle can begin, its latency always contributes to the II of the loop. If it is the slowest operation contributing, then it is the operation that extends the II.</p>
+<p>This can be seen when different clock frequencies are used.
+For example, when the clock is set to 85MHz an <code class="docutils literal notranslate"><span class="pre">II=1</span></code> is achieved because the
+<code class="docutils literal notranslate"><span class="pre">+</span></code> then completes within a cycle, alongside the other contributors to the II.
+As the clock frequency goes up, the operation becomes multicycle. At 333MHz
+this increases up to <code class="docutils literal notranslate"><span class="pre">II=7</span></code>.
+This can be see by comparing result tables <code class="docutils literal notranslate"><span class="pre">0.vanilla</span></code> (333MHz) and
+<code class="docutils literal notranslate"><span class="pre">3.vanilla</span></code> (85MHz) in <code class="docutils literal notranslate"><span class="pre">latency.ref</span></code>.</p>
+<p>This is where <code class="docutils literal notranslate"><span class="pre">_SLXLoopInterchange</span></code> helps. If the inner and outer loop
+iteration is swapped, the same result is produced but the operation schedule
+and corresponding timing is very different.
+By doing this, the <code class="docutils literal notranslate"><span class="pre">acc[i]</span></code> value being read is that produced from the
+previous time the inner loop in its entirety executed. This means the
+<code class="docutils literal notranslate"><span class="pre">+</span></code> operation no longer has to complete within the II of the inner loop.
+At both 85MHz and 333MHz an <code class="docutils literal notranslate"><span class="pre">II=1</span></code> is achieved when the loops are
+interchanged.
+This can be see by comparing result tables <code class="docutils literal notranslate"><span class="pre">2.interchange</span></code> (333MHz) and
+<code class="docutils literal notranslate"><span class="pre">5.interchange</span></code> (85MHz) in <code class="docutils literal notranslate"><span class="pre">latency.ref</span></code>.</p>
+<p>In sum, the fact that there is a loop carried dependency in the inner loop,
+the iteration order of the loops, the latency of involved operations, and
+a high frequency set conditions for having a bad II. However, by using
+<code class="docutils literal notranslate"><span class="pre">_SLXLoopInterchange</span></code> the loop carried dependency is removed from the inner
+loop and an optimal pipeline <code class="docutils literal notranslate"><span class="pre">II=1</span></code> is achieved.</p>
+</div>
+<div class="section" id="dft-and-variants-dft">
+<h2>DFT and variants (<code class="docutils literal notranslate"><span class="pre">dft</span></code>)<a class="headerlink" href="#dft-and-variants-dft" title="Permalink to this headline">¶</a></h2>
+<p>The discrete Fourier transform (DFT) is perhaps the most essential tool in
+signal processing. It is used to compute a signal’s frequency spectrum and a
+system’s frequency domain response.
+This allows reflecting on and analyzing information encoded in a signal’s
+frequency, phase and amplitude as well as on a system’s capabilities to
+react to such type of signals.
+There are several ways to implement a DFT, including the versatile and
+computation efficient fast Fourier transform (FFT) which is a basic block for
+many applications in wireless telecommunications, audio processing, radars,
+among many others.</p>
+<p>The example in this folder is a non-optimized DFT implementation, written
+in the style that closely matches the algorithm specification:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="nl">loop_freq</span><span class="p">:</span><span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">temp_real</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">temp_imag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="c1">// (2 * pi * i)/N</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="mf">3.141592653589</span> <span class="o">/</span> <span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">TEMP_TYPE</span><span class="p">)</span><span class="n">i</span><span class="p">;</span>
+    <span class="c1">// Calculate the jth frequency sample_sequentially</span>
+    <span class="nl">loop_calc</span><span class="p">:</span><span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">j</span> <span class="o">*</span> <span class="n">w</span><span class="p">);</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">j</span> <span class="o">*</span> <span class="n">w</span><span class="p">);</span>
+        <span class="c1">// Multiply the current phasor with the appropriate input sample</span>
+        <span class="c1">// and keep a running sum</span>
+        <span class="n">temp_real</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">sample_real</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">c</span> <span class="o">-</span> <span class="n">sample_imag</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">s</span><span class="p">);</span>
+        <span class="n">temp_imag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">sample_real</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">s</span> <span class="o">+</span> <span class="n">sample_imag</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">c</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The inner loop contains two important loop carried dependencies,
+<code class="docutils literal notranslate"><span class="pre">temp_real[i]</span> <span class="pre">+=</span></code> and <code class="docutils literal notranslate"><span class="pre">temp_imag[i]</span></code>, of floating-point values.
+When pipelined, these addition operations contribute to the II of the inner
+loop, and if the addition is a multi-cycle operation then the II will also
+be multicycle - see the related discussion in the <a class="reference internal" href="#dimension-reduction"><span class="std std-ref">Dimension reduction (dimension_reduction)</span></a>
+example.
+The application will then benefit from <code class="docutils literal notranslate"><span class="pre">_SLXLoopInterchange</span></code> because
+the loop carried dependencies will then move to the outer loop and no
+longer contribute to the II of the inner loop.
+This is shown in the two <code class="docutils literal notranslate"><span class="pre">dft</span></code> variants provided that are provided in
+the package.</p>
+<p>The effect of relocating the loop carried dependency is better seen in the
+<code class="docutils literal notranslate"><span class="pre">perfectized</span></code> example.
+This example is the result of applying a loop perfectization transformation
+to the code excerpt shown above.
+This way, <code class="docutils literal notranslate"><span class="pre">_SLXLoopInterchange</span></code> can be applied successfully,
+as can be seen in <code class="docutils literal notranslate"><span class="pre">latency.ref</span></code> where <code class="docutils literal notranslate"><span class="pre">loop_calc</span></code> is now the
+reported outer loop. Comparing the non-interchanged <code class="docutils literal notranslate"><span class="pre">1.nointerchange</span></code> inner loop
+<code class="docutils literal notranslate"><span class="pre">II=9</span></code> to the <code class="docutils literal notranslate"><span class="pre">2.interchange</span></code> inner loop <code class="docutils literal notranslate"><span class="pre">II=1</span></code> shows the benefit of performing
+the interchange.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">orig</span></code> example is the original software implementation from the
+code excerpt.
+This example leads to a couple of interesting effects with the SLX Plugin.
+On the one hand, the loops are not perfectly nested so applying an
+interchange is not possible without perfectizing the loop nest.
+On the other hand, the application of IR design optimization options
+changes the code structure so that other Vitis HLS transformations
+kick in. These transformations also help to achieve a good <code class="docutils literal notranslate"><span class="pre">II=1</span></code>
+in spite of the loop carried dependency.
+This is visible in the <code class="docutils literal notranslate"><span class="pre">latency.ref</span></code> results where both <code class="docutils literal notranslate"><span class="pre">1.nointerchange</span></code>
+and 2.interchange achieve <code class="docutils literal notranslate"><span class="pre">II=1</span></code>. Note that <code class="docutils literal notranslate"><span class="pre">2.interchange</span></code>
+reports the loops in their non-interchanged order, meaning that the
+interchange transformation was not performed.</p>
+</div>
+<div class="section" id="botda-brillouin-optical-time-domain-analyzer-botda">
+<h2>BOTDA: Brillouin optical time domain analyzer (<code class="docutils literal notranslate"><span class="pre">botda</span></code>)<a class="headerlink" href="#botda-brillouin-optical-time-domain-analyzer-botda" title="Permalink to this headline">¶</a></h2>
+<p>BOTDA sensors are used for temperature and strain monitoring of oil &amp; gas
+pipelines, bridges, dams, security fences and power lines. They are excellent
+for detecting corrosion, buckling, down hole, micro cracks, and leakages in
+pipelines. It can also be used for fire detection and improve efficiency in
+oil refineries.</p>
+<p>The example contains a linear support vector regression (LSVR) function that
+is the algorithm’s hotspot. SVR and LSVR are based on matrix-vector
+multiplication, which makes them good candidates for pipelining and
+parallelization from a hardware perspective.</p>
+<p>The code can be found in <code class="docutils literal notranslate"><span class="pre">botda.cpp</span></code>. The hotspot function <code class="docutils literal notranslate"><span class="pre">linearSVR()</span></code>
+implements the SVR algorithm that aims to apply the regression to the data.
+Two versions of the algorithm, <code class="docutils literal notranslate"><span class="pre">orig</span></code> and <code class="docutils literal notranslate"><span class="pre">split</span></code> are available. <code class="docutils literal notranslate"><span class="pre">orig</span></code>
+implements a naive version of the algorithm, <code class="docutils literal notranslate"><span class="pre">split</span></code> implements a version
+where the main loop nest has been divided in order to reduce the inner loop
+carried dependencies.</p>
+<p>The existence of a third loop <code class="docutils literal notranslate"><span class="pre">L3</span></code> in this second example does not reduce
+performance, because it allows for the main loop nest to be perfectly nested,
+thus providing more efficient optimizations.
+However, even after splitting, the hotspot still has an inner loop
+carried dependency <code class="docutils literal notranslate"><span class="pre">partial_sum[i]</span> <span class="pre">+=</span></code> that contributes to an <code class="docutils literal notranslate"><span class="pre">II=9</span></code>.
+Loop interchange relocates the dependency to the outer loop, allowing
+for an improved <code class="docutils literal notranslate"><span class="pre">II=1</span></code> and an improved loop nest latency through more
+efficient pipelining.</p>
+</div>
+<div class="section" id="mri-reconstruction-mri-reconstruction">
+<h2>MRI reconstruction (<code class="docutils literal notranslate"><span class="pre">mri/reconstruction</span></code>)<a class="headerlink" href="#mri-reconstruction-mri-reconstruction" title="Permalink to this headline">¶</a></h2>
+<p>MRI reconstruction transforms the raw data acquired by an MRI scanner into images
+that can be interpreted clinically. There are several methods of scanning and
+interpreting the results. The algorithm included here performs an anatomically
+constrained image reconstruction of non-Cartesian (spiral) scan data which has
+only recently been made possible due to its high computational intensity.
+The design is based on a conjugate gradient algorithm which determines the output
+voxels iteratively to improve the value of a cost function.
+Our example accelerates the first step of the three steps in this algorithm. This
+step calculates a convolution kernel and is the most computationally intensive part
+of the algorithm since it traverses the outer loop <code class="docutils literal notranslate"><span class="pre">8</span> <span class="pre">*</span> <span class="pre">N</span></code> times.
+Interchanging the two loops removes the dependency when accumulating the output
+data in the destination arrays <code class="docutils literal notranslate"><span class="pre">rQ</span></code> and <code class="docutils literal notranslate"><span class="pre">iQ</span></code> from the inner loop.
+This allows for an <code class="docutils literal notranslate"><span class="pre">II=1</span></code> compared to an <code class="docutils literal notranslate"><span class="pre">II=5</span></code> in the original code.</p>
+</div>
+<div class="section" id="sha-3-algorithm-tiny-sha3">
+<h2>SHA-3 algorithm (<code class="docutils literal notranslate"><span class="pre">tiny_sha3</span></code>)<a class="headerlink" href="#sha-3-algorithm-tiny-sha3" title="Permalink to this headline">¶</a></h2>
+<p>SHA stands for secure hash algorithm. It used for creating secure hashing of
+data and certificate files. Every piece of data produces a unique hash that is
+thoroughly non-duplicable by any other piece of data.
+<code class="docutils literal notranslate"><span class="pre">tiny_sha3</span></code> is a small implementation of the FIPS 202 and SHA3 hash function.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">sha3.c</span></code> is where the heavy computation happens. The hotspot starts at the
+following loop header in function <code class="docutils literal notranslate"><span class="pre">sha3_keccakf</span></code>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">sha3_keccakf</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">st</span><span class="p">[</span><span class="mi">25</span><span class="p">])</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="n">KECCAKF_ROUNDS</span><span class="p">;</span> <span class="n">r</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+             <span class="n">bc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">st</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">^</span> <span class="n">st</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">5</span><span class="p">]</span> <span class="o">^</span> <span class="n">st</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">10</span><span class="p">]</span> <span class="o">^</span> <span class="n">st</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">15</span><span class="p">]</span> <span class="o">^</span> <span class="n">st</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">20</span><span class="p">];</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+             <span class="n">t</span> <span class="o">=</span> <span class="n">bc</span><span class="p">[(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span> <span class="o">%</span> <span class="mi">5</span><span class="p">]</span> <span class="o">^</span> <span class="n">ROTL64</span><span class="p">(</span><span class="n">bc</span><span class="p">[(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">5</span><span class="p">],</span> <span class="mi">1</span><span class="p">);</span>
+             <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="mi">25</span><span class="p">;</span> <span class="n">j</span> <span class="o">+=</span> <span class="mi">5</span><span class="p">)</span>
+                 <span class="n">st</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="n">i</span><span class="p">]</span> <span class="o">^=</span> <span class="n">t</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="p">...</span>
+
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>Vitis HLS  automatically applies the HLS <code class="docutils literal notranslate"><span class="pre">pipeline</span></code> directive to that loop
+and so all inner loops are fully unrolled.
+Other HLS compiler optimizations are performed, resulting in 25 values being
+loaded from memory for variable <code class="docutils literal notranslate"><span class="pre">st</span></code> once per iteration, near the start of
+the iteration.
+Then near the end of the iteration 25 values are stored to <code class="docutils literal notranslate"><span class="pre">st</span></code>.
+All intermediate stores are replaced by internal local store of data that is
+implemented using flip-flops (FFs).</p>
+<p>When the SLX Plugin’s IR design optimizations are applied, Vitis HLS sees that
+it can further load values from <code class="docutils literal notranslate"><span class="pre">st</span></code> into FFs once before the loop starts,
+and replace all stores in the loop body by stores that occur after the loop
+completes.
+It can do this as it is certain that the loop body will be executed at least
+once.
+This means that the loop body does not contain any loads or stores for <code class="docutils literal notranslate"><span class="pre">st</span></code>
+anymore, and so can be implemented in highly parallelizable logic
+This results in <code class="docutils literal notranslate"><span class="pre">II=1</span></code> and <code class="docutils literal notranslate"><span class="pre">latency=24</span></code> for the loop compared to <code class="docutils literal notranslate"><span class="pre">II=26</span></code>
+and <code class="docutils literal notranslate"><span class="pre">latency=624</span></code> when not using the SLX Plugin.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="slx-fpga.html" class="btn btn-neutral float-right" title="Use with SLX FPGA" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="instructions.html" class="btn btn-neutral float-left" title="Instructions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Silexica GmbH
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+.. _slxfpga-chap:
+
+Use with SLX FPGA
+=================
+
+`SLX FPGA`_ is a tool designed to accelerate HLS design flows.
+It tackles the challenges associated with the HLS design flow including
+non-synthesizable C/C++ code, non-hardware aware C/C++ code, detecting
+application parallelism, and where and how to insert pragmas.
+The figure below gives an overview of the SLX FPGA workflow for implementation
+and optimization of an HLS application, starting with a C\C++ specification.
+
+.. TODO provide an PDF scalable image for the latex version
+
+.. figure:: images/standard-slx-fpga.png
+   :alt: SLX FPGA Workflow
+
+   `SLX FPGA`_: automated workflow for HLS
+
+SLX FPGA performs dynamic analysis to extract deep insight into the behavior
+of the code. Its analysis capabilities are then able to provide several
+perspectives on the code which can be especially useful when trying to
+understand performance blockers.
+It analyzes parallelism in the code as well as memory consumption and memory
+accesses. It can evaluate the impact of each section of code on the performance
+of the overall program execution.
+This makes it easier for designers to determine if and where the code needs
+refactoring. The tool then takes this one very important step further and uses
+those insights to determine what pragmas to use, where to use them, and with
+what parameters in order to achieve the most optimal implementation possible.
+Moreover, SLX FPGA can keep track of resource consumption as it explores
+the vast design space to keep the final implementation within the constraints
+specified by the designer.
+SLX FPGA has been augmented to detect opportunities for performing loop
+interchange transformations. When it determines that a particular loop nest
+would result in better performance by interchanging loops, it inserts the
+necessary directives in the code to direct the SLX Plugin to perform the
+transformation. The tool flow is depicted in the figure below.
+
+.. only:: latex
+
+   .. figure:: images/overview-with-slx-fpga.pdf
+      :alt: SLX FPGA with the SLX Plugin
+
+      `SLX FPGA`_, the SLX Plugin and Vitis HLS used together to
+      automatically determine and apply loop interchange directives.
+
+.. only:: html
+
+   .. figure:: images/overview-with-slx-fpga.*
+      :alt: SLX FPGA with the SLX Plugin
+
+      `SLX FPGA`_, the SLX Plugin and Vitis HLS used together to
+      automatically determine and apply loop interchange directives.
+
+.. _slx-fpga-project:
+
+SLX FPGA Project
+----------------
+
+SLX FPGA version 2020.4 contains the SLX Plugin installed along with its
+other tool binaries and libraries.
+No additional setup steps are required to combine SLX FPGA and the SLX
+Plugin.
+Open the SLX FPGA GUI following the usual procedure and the tool
+will already be aware of the plugin (restricted to supported versions).
+
+.. attention::
+   
+   The SLX Plugin is only supported in SLX FPGA 2020.4 for Ubuntu 18.04
+   host machines.
+
+The SLX FPGA GUI allows enabling and disabling the SLX Plugin and the
+corresponding loop interchange directives.
+When enabled, SLX FPGA will then take care of generating and adapting
+Tcl files, setting options, adding ``_SLXLoopInterchange`` to your source
+files, and optimizing your design.
+
+For more information about SLX FPGA, refer to the `SLX FPGA User Guide`_.
+
+.. Links, footnotes, etc...
+
+.. _SLX FPGA: https://www.silexica.com/products/slx-fpga
+
+.. TODO link to the SLX FPGA 2020.4 manual when available
+.. _SLX FPGA User Guide: https://www.silexica.com/wp-content/uploads/SLX-FPGA-User-Guide-2020.3.pdf

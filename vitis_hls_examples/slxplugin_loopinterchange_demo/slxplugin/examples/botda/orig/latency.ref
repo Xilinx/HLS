@@ -1,0 +1,30 @@
+## 0.vanilla
+        |             |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |  Loop Name  |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        |- loop_init  |     1136|     1136|         1|          1|          1|  1136|       yes|
+        |- L1         |  2279952|  2279952|      2007|          -|          -|  1136|        no|
+        | + L2        |     1987|     1987|        17|          9|          1|   220|       yes|
+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
+|Total                |        4|     5|      840|      715|    0|
+
+## 1.nointerchange
+        |             |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |  Loop Name  |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        |- loop_init  |     1135|     1135|         1|          1|          1|  1136|       yes|
+        |- L1         |  2279951|  2279951|      2007|          -|          -|  1136|        no|
+        | + L2        |     1987|     1987|        17|          9|          1|   220|       yes|
+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
+|Total                |        4|     5|      873|      715|    0|
+
+## 2.interchange
+        |             |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |  Loop Name  |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        |- loop_init  |     1135|     1135|         1|          1|          1|  1136|       yes|
+        |- L1         |  2279951|  2279951|      2007|          -|          -|  1136|        no|
+        | + L2        |     1987|     1987|        17|          9|          1|   220|       yes|
+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
+|Total                |        4|     5|      873|      715|    0|
+
