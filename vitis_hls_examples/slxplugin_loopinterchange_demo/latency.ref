@@ -1,0 +1,55 @@
+## 0.vanilla: no LLVM_CUSTOM_CMD, no Xilinx directives (clock: 333MHz)
+        |            |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |  Loop Name |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        |- loop_out  |   460800|   460800|      1800|          -|          -|   256|        no|
+        | + loop_in  |     1796|     1796|        12|          7|          1|   256|       yes|
+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
+|Total                |        0|     3|      954|      858|    0|
+
+## 1.nointerchange: LLVM_CUSTOM_CMD -slx-prepare-interchange, no Xilinx directives (clock: 333MHz)
+        |            |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |  Loop Name |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        |- loop_out  |   460543|   460543|      1799|          -|          -|   256|        no|
+        | + loop_in  |     1795|     1795|        11|          7|          1|   256|       yes|
+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
+|Total                |        0|     3|      932|      822|    0|
+
+## 2.interchange: LLVM_CUSTOM_CMD -slx-prepare-interchange -slx-loop-interchange, no Xilinx directives (clock: 333MHz)
+        |             |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |  Loop Name  |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        |- loop_in    |    68863|    68863|       269|          -|          -|   256|        no|
+        | + loop_out  |      266|      266|        12|          1|          1|   256|       yes|
+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
+|Total                |        0|     3|      998|      783|    0|
+
+##*****************************Switching to 85MHz*********************************##
+## 3.vanilla: no LLVM_CUSTOM_CMD, no Xilinx directives (clock: 85MHz)
+        |            |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |  Loop Name |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        |- loop_out  |    67328|    67328|       263|          -|          -|   256|        no|
+        | + loop_in  |      259|      259|         5|          1|          1|   256|       yes|
+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
+|Total                |        0|     3|      735|      970|    0|
+
+## 4.nointerchange: LLVM_CUSTOM_CMD -slx-prepare-interchange, no Xilinx directives (clock: 85MHz)
+        |            |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |  Loop Name |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        |- loop_out  |    67071|    67071|       262|          -|          -|   256|        no|
+        | + loop_in  |      258|      258|         4|          1|          1|   256|       yes|
+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
+|Total                |        0|     3|      649|      893|    0|
+
+## 5.interchange: LLVM_CUSTOM_CMD -slx-prepare-interchange -slx-loop-interchange, no Xilinx directives (clock: 85MHz)
+        |             |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |  Loop Name  |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        |- loop_in    |    67071|    67071|       262|          -|          -|   256|        no|
+        | + loop_out  |      259|      259|         5|          1|          1|   256|       yes|
+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
+|Total                |        0|     3|      649|      856|    0|
+
