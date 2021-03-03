@@ -27,7 +27,7 @@ if { ![file exists $::env(HLS_LLVM_PLUGIN_DIR)/LLVMCustomPasses.so] } {
 }
 ### The following variable must be set before csynth_design
 # Do not use global namespace (::) for variables used in LVM_CUSTOM_CMD
-set ::LLVM_CUSTOM_CMD {$LLVM_CUSTOM_OPT -load $::env(HLS_LLVM_PLUGIN_DIR)/LLVMCustomPasses.so -mem2reg -analyzer -renamer $LLVM_CUSTOM_INPUT -o $LLVM_CUSTOM_OUTPUT}
+set ::LLVM_CUSTOM_CMD {$LLVM_CUSTOM_OPT -load $::env(HLS_LLVM_PLUGIN_DIR)/LLVMCustomPasses.so -mem2reg -analyzer -opcode_count -renamer $LLVM_CUSTOM_INPUT -o $LLVM_CUSTOM_OUTPUT}
 
 # Open a project and remove any existing data
 open_project -reset proj
