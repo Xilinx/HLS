@@ -33,7 +33,7 @@ all-debug-off: CXXFLAGS := $(CXXFLAGS) -DNDEBUG
 
 all-debug-off: LLVMCustomPasses.so
 
-LLVMCustomPasses.so: Renamer.o Analyzer.o
+LLVMCustomPasses.so: Renamer.o Analyzer.o Opcode_counter.o
 	$(CXX) -shared $^ -o $@ -fPIC $(CXXFLAGS) $(LDFLAGS)
 
 %.o: %.cpp
