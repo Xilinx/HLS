@@ -21,7 +21,7 @@
 
 //===----------------------------------------------------------------------===//
 //
-// Analyze pipelined loops memory accesses patterns using Scalar Evolution.
+// Analyze, opcode stats
 //
 //===----------------------------------------------------------------------===//
 
