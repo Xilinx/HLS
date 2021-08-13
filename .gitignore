@@ -1,5 +1,3 @@
 *.swp
-*.so
 *.o
 *.log
-push_github.sh
