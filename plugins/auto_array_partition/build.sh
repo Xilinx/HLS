@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # (C) Copyright 2016-2021 Xilinx, Inc.
 # All Rights Reserved.
 #
@@ -18,7 +20,6 @@
 # specific language governing permissions and limitations
 # under the License.
 
-#!/usr/bin/env bash
 source `dirname -- $0`/../setup-vitis-hls-llvm.sh
 
 clang_path=$XILINX_HLS/lnx64/tools/clang-3.9-csynth

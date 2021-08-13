@@ -30,7 +30,7 @@ VITIS_CMAKE="$XILINX_VITIS/tps/lnx64/cmake-3.3.2/bin:"; PATH=$(echo "$PATH" | se
 export PATH=$XILINX_HLS/tps/lnx64/binutils-2.26/bin:$XILINX_HLS/tps/lnx64/gcc-6.2.0/bin$PATH
 
 [ -n "$LD_LIBRARY_PATH" ] && LD_LIBRARY_PATH=:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=$XILINX_HLS/tps/lnx64/binutils-2.26/bin:$XILINX_HLS/tps/lnx64/gcc-6.2.0/bin$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$XILINX_HLS/tps/lnx64/binutils-2.26/bin:$XILINX_HLS/tps/lnx64/gcc-6.2.0/bin:$XILINX_HLS/lib/lnx64.o$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$XILINX_HLS/tps/lnx64/binutils-2.26/lib:$XILINX_HLS/tps/lnx64/gcc-6.2.0/lib:$XILINX_HLS/tps/lnx64/gcc-6.2.0/lib64:$LD_LIBRARY_PATH
 
 [ -n "$LIBRARY_PATH" ] && LIBRARY_PATH=:$LIBRARY_PATH
