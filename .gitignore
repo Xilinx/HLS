@@ -1,3 +1,5 @@
 *.swp
+*.so
 *.o
 *.log
+updategit.sh

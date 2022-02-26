@@ -1,2 +1,0 @@
-Copyright (C) 2020-2021, Silexica GmbH, Lichtstr. 25, Cologne, Germany
-Licensed under the terms and conditions specified in https://www.silexica.com/software-terms-and-conditions

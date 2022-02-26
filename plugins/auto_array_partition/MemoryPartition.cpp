@@ -328,6 +328,7 @@ private:
   Function *partition_intrisic;
   Function *reshape_intrisic;
   Function *sideeffect_intrinsic;
+  Type *int1_ty;
   Type *int32_ty;
   Type *int64_ty;
   SetVector<Instruction *> floating_inst;
@@ -438,6 +439,7 @@ bool AutoMemoryPartition::doInitialization(Module &M) {
   sideeffect_intrinsic = nullptr;
   int32_ty = Type::getInt32Ty(M.getContext());
   int64_ty = Type::getInt64Ty(M.getContext());
+  int1_ty = Type::getInt1Ty(M.getContext());
   return false;
 }
 
@@ -2177,6 +2179,7 @@ void AutoMemoryPartition::generate_new_partition_intrinsic(
     Inputs.push_back(ConstantInt::get(int32_ty, new_partition.type));
     Inputs.push_back(ConstantInt::get(int32_ty, new_partition.factor));
     Inputs.push_back(ConstantInt::get(int32_ty, new_partition.dim));
+    Inputs.push_back(ConstantInt::get(int1_ty, 0));
     OperandBundleDef partition_bundle(xilinx_array_partition_bundle_tag,
                                       Inputs);
     auto call = CallInst::Create(sideeffect_intrinsic, args,
@@ -2189,6 +2192,7 @@ void AutoMemoryPartition::generate_new_partition_intrinsic(
 
 void AutoMemoryPartition::generate_new_reshape_intrinsic(
     Value *array, reshape_record new_reshape, Instruction *insertPos) {
+
   if (sideeffect_intrinsic != nullptr) {
     SmallVector<Value *, 1> args;
     SmallVector<Value *, 4> Inputs;

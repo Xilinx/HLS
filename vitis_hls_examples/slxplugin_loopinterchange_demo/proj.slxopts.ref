@@ -1,4 +1,0 @@
-set_slx_plugin_options 1.nointerchange -slx-prepare-for-interchange
-set_slx_plugin_options 2.interchange -slx-prepare-for-interchange -slx-loop-interchange
-set_slx_plugin_options 4.nointerchange -slx-prepare-for-interchange
-set_slx_plugin_options 5.interchange -slx-prepare-for-interchange -slx-loop-interchange

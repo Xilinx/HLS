@@ -1,4 +1,4 @@
-# Xilinx Vitis HLS LLVM 2021.1
+# Xilinx Vitis HLS LLVM 2021.2
 
 The directory contains Xilinx HLS LLVM source code and examples for use with Xilinx Vitis HLS 2020.2 release.
 
@@ -17,6 +17,6 @@ hls-llvm-project | llvm-project submodule, only the `clang`, `clang-tools-extra`
 - Install [ninja](https://ninja-build.org/) [optional for faster builds]
 - run [build-hls-llvm-project.sh](build-hls-llvm-project.sh) in the cloned directory:
   > ./build-hls-llvm-project.sh
-
-Copyright 2016-2021 Xilinx, Inc.
+  
+Copyright 2016-2022 Xilinx, Inc.
 SPDX-License-Identifier: Apache-2.0
