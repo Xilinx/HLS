@@ -2,4 +2,5 @@
 *.so
 *.o
 *.log
+hls-build
 updategit.sh

@@ -39,7 +39,7 @@ create_clock -period "300MHz"
 
 ### The following variable must be set before csynth_design
 # TODO: Change this location to your local build location
-set ::env(XILINX_OPEN_SOURCE_LLVM_BUILD_PATH) "[pwd]/../../../hls-build"
+set ::env(XILINX_OPEN_SOURCE_LLVM_BUILD_PATH) "[pwd]/../../hls-build"
 
 # Compile and runs pre-synthesis C simulation using the provided C test bench
 csim_design

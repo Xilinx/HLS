@@ -29,7 +29,7 @@ void top(int *a, int *b, int *c) {
   for (ap_int<20> i = 0; i < 1000; ++i) {
 #pragma HLS pipeline II=1
 #pragma HLS unroll factor=10
-#pragma HLS false_dependence variable=c_buf inter false
+#pragma HLS dependence variable=c_buf inter false
     c_buf[i] = a_buf[i] + b_buf[i];
   }
   memcpy(c, c_buf, sizeof(int) * 1000);
