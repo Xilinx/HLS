@@ -1,22 +1,30 @@
-# Xilinx Vitis HLS LLVM 2021.2
+# Xilinx Vitis HLS 2022.2 Open Source Resources
+This is an index to other Vitis HLS related github repositories.
 
-The directory contains Xilinx HLS LLVM source code and examples for use with Xilinx Vitis HLS 2020.2 release.
+## Vitis HLS User Resources
+Resources used to support users of the Vitis HLS product.  See also: [Vitis HLS product documentation](https://docs.xilinx.com/r/en-US/ug1399-vitis-hls)
 
-Directory            | Description      
+Repository Link            | Description
 ---------------------|------------------
-hls-llvm-project | llvm-project submodule, only the `clang`, `clang-tools-extra`, and `llvm` sub-directories are used by Vitis HLS
-[ext](ext) | External libraries required by hls-llvm-project
-[plugins](plugins) | Custom llvm passes that can be built and used in Vitis HLS
-[vitis_hls_examples](vitis_hls_examples) | Examples of using Vitis HLS with local hls-llvm-project or plugin binaries
+[Vitis-HLS-Introductory-Examples](https://github.com/Xilinx/Vitis-HLS-Introductory-Examples/tree/2022.2) | Vitis HLS basic C/C++ design examples 
+[Vitis_Libraries](https://github.com/Xilinx/Vitis_Libraries/tree/v2022.2_rel) | Performance-optimized Vitis C/C++ libraries that offer out-of-the-box acceleration with minimal code changes to existing applications
 
-## How to build hls-llvm-project
-- Use a Xilinx compatible linux [Build Machine OS](https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/acceleration_installation.html)
-  - This requirement is due to [ext](ext) library usage
-- Clone the HLS repo sources (including hls-llvm-project submodule)
-- Install [CMake 3.4.3 or higher](https://cmake.org/download/)
-- Install [ninja](https://ninja-build.org/) [optional for faster builds]
-- run [build-hls-llvm-project.sh](build-hls-llvm-project.sh) in the cloned directory:
-  > ./build-hls-llvm-project.sh
-  
-Copyright 2016-2022 Xilinx, Inc.
+## Vitis HLS Design Utilities
+C/C++ code that is used to implement utility functions/classes within Vitis HLS
+
+Repository Link            | Description
+---------------------|------------------
+[hls-lib-stream](https://github.com/Xilinx/hls-lib-stream/tree/2022.2) | Vitis HLS C/C++ code associated with HLS streams and channels
+
+
+## Vitis HLS Implementation
+Open source code that is used to implement the Vitis HLS product
+
+Repository Link            | Description
+---------------------|------------------
+[hls-llvm-project](https://github.com/Xilinx/hls-llvm-project/tree/2022.2) | Branch of the llvm-project project, Vitis HLS only uses the `clang`, `clang-tools-extra`, and `llvm` sub-directories
+[hls-llvm-examples](https://github.com/Xilinx/hls-llvm-examples/tree/2022.2) | Examples of using Vitis HLS with local hls-llvm-project or plugin binaries 
+
+Copyright 2016-2023 Xilinx, Inc.
 SPDX-License-Identifier: Apache-2.0
+
