@@ -1,8 +1,8 @@
 # =============================================================================
 # Xilinx HLS LLVM Release License
 # =============================================================================
-# (C) Copyright 2016-2022 Xilinx, Inc.
-# All Rights Reserved.
+# Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+# Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 #
 # Licensed to the Apache Software Foundation (ASF) under one
 # or more contributor license agreements.  See the NOTICE file
