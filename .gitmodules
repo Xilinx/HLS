@@ -1,3 +1,0 @@
-[submodule "hls-llvm-project"]
-	path = hls-llvm-project
-	url = https://github.com/Xilinx/hls-llvm-project
