@@ -26,5 +26,6 @@ Repository Link            | Description
 [hls-llvm-examples](https://github.com/Xilinx/hls-llvm-examples/tree/2022.2) | Examples of using Vitis HLS with local hls-llvm-project or plugin binaries 
 
 Copyright 2016-2023 Xilinx, Inc.
+Copyright 2022-2023 Advanced Micro Devices, Inc.
 SPDX-License-Identifier: Apache-2.0
 
