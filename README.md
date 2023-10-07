@@ -1,4 +1,4 @@
-# Xilinx Vitis HLS 2022.2 Open Source Resources
+# Xilinx Vitis HLS 2023.1 Open Source Resources
 This is an index to other Vitis HLS related github repositories.
 
 ## Vitis HLS User Resources
@@ -6,8 +6,8 @@ Resources used to support users of the Vitis HLS product.  See also: [Vitis HLS 
 
 Repository Link            | Description
 ---------------------|------------------
-[Vitis-HLS-Introductory-Examples](https://github.com/Xilinx/Vitis-HLS-Introductory-Examples/tree/2022.2) | Vitis HLS basic C/C++ design examples 
-[Vitis_Libraries](https://github.com/Xilinx/Vitis_Libraries/tree/v2022.2_rel) | Performance-optimized Vitis C/C++ libraries that offer out-of-the-box acceleration with minimal code changes to existing applications
+[Vitis-HLS-Introductory-Examples](https://github.com/Xilinx/Vitis-HLS-Introductory-Examples/tree/2023.1) | Vitis HLS basic C/C++ design examples 
+[Vitis_Libraries](https://github.com/Xilinx/Vitis_Libraries/tree/v2023.1_rel) | Performance-optimized Vitis C/C++ libraries that offer out-of-the-box acceleration with minimal code changes to existing applications
 
 ## Vitis HLS Design Utilities
 C/C++ code that is used to implement utility functions/classes within Vitis HLS
