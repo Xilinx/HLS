@@ -23,7 +23,7 @@ Open source code that is used to implement the Vitis HLS product
 Repository Link            | Description
 ---------------------|------------------
 [hls-llvm-project](https://github.com/Xilinx/hls-llvm-project/tree/2023.1) | Branch of the llvm-project project, Vitis HLS only uses the `clang`, `clang-tools-extra`, and `llvm` sub-directories
-[hls-llvm-examples](https://github.com/Xilinx/hls-llvm-examples/tree/2022.2) | Examples of using Vitis HLS with local hls-llvm-project or plugin binaries 
+[hls-llvm-examples](https://github.com/Xilinx/hls-llvm-examples/tree/2023.1) | Examples of using Vitis HLS with local hls-llvm-project or plugin binaries 
 
 Copyright 2016-2023 Xilinx, Inc.
 Copyright 2022-2023 Advanced Micro Devices, Inc.
