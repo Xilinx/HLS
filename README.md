@@ -6,8 +6,8 @@ Resources used to support users of the Vitis HLS product.  See also: [Vitis HLS 
 
 Repository Link            | Description
 ---------------------|------------------
-[Vitis-HLS-Introductory-Examples](https://github.com/Xilinx/Vitis-HLS-Introductory-Examples/tree/2023.1) | Vitis HLS basic C/C++ design examples 
-[Vitis_Libraries](https://github.com/Xilinx/Vitis_Libraries/tree/v2023.1_rel) | Performance-optimized Vitis C/C++ libraries that offer out-of-the-box acceleration with minimal code changes to existing applications
+[Vitis-HLS-Introductory-Examples](https://github.com/Xilinx/Vitis-HLS-Introductory-Examples/tree/2023.2) | Vitis HLS basic C/C++ design examples 
+[Vitis_Libraries](https://github.com/Xilinx/Vitis_Libraries/tree/v2023.2_rel) | Performance-optimized Vitis C/C++ libraries that offer out-of-the-box acceleration with minimal code changes to existing applications
 
 ## Vitis HLS Design Utilities
 C/C++ code that is used to implement utility functions/classes within Vitis HLS
@@ -22,7 +22,7 @@ Open source code that is used to implement the Vitis HLS product
 
 Repository Link            | Description
 ---------------------|------------------
-[hls-llvm-project](https://github.com/Xilinx/hls-llvm-project/tree/2023.1) | Branch of the llvm-project project, Vitis HLS only uses the `clang`, `clang-tools-extra`, and `llvm` sub-directories
+[hls-llvm-project](https://github.com/Xilinx/hls-llvm-project/tree/2023.2) | Branch of the llvm-project project, Vitis HLS only uses the `clang`, `clang-tools-extra`, and `llvm` sub-directories
 [hls-llvm-examples](https://github.com/Xilinx/hls-llvm-examples/tree/2023.1) | Examples of using Vitis HLS with local hls-llvm-project or plugin binaries 
 
 Copyright 2016-2023 Xilinx, Inc.
