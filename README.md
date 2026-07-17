@@ -1,4 +1,4 @@
-# Xilinx Vitis HLS 2025.1 Open Source Resources
+# Xilinx Vitis HLS Open Source Resources
 This is an index to other Vitis HLS related github repositories.
 
 ## Vitis HLS User Resources
