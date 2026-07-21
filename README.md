@@ -7,6 +7,7 @@ Resources used to support users of the Vitis HLS product.  See also: [Vitis HLS 
 Repository Link            | Description
 ---------------------|------------------
 [Vitis-HLS-Introductory-Examples](https://github.com/Xilinx/Vitis-HLS-Introductory-Examples/tree/2025.1) | Vitis HLS basic C/C++ design examples 
+[Vitis-HLS-Performance-Pragma-Tests](https://github.com/Xilinx/Vitis-HLS-performance-pragma) | Vitis HLS performance pragma tests 
 [Vitis_Libraries](https://github.com/Xilinx/Vitis_Libraries/tree/2025.1) | Performance-optimized Vitis C/C++ libraries that offer out-of-the-box acceleration with minimal code changes to existing applications
 
 ## Vitis HLS Design Utilities
